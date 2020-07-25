@@ -1,0 +1,23 @@
+.information_box{
+  position: relative;
+    top: 15px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 400px;
+    margin: 0 auto;
+    text-align: center;
+
+}
+
+#head{
+  width:120px;
+  height:120px;
+  line-height:50px;
+  border-radius:120px;
+  overflow:hidden;
+}
+
+.item{
+  margin-bottom:20px;
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>联系管理员</title>
+</head>
+{% load static %}
+      <link rel="stylesheet" type="text/css" href="{% static 'src/css/layui.css' %}">
+      <script src="{% static 'src/layui.js' %}"></script>
+      <link rel="stylesheet" type="text/css" href="{% static 'src/css/mainsite/contact_manager.css' %}">
+<body>
+<div class="contact">
+    <header class="layui-logo">联系管理员SYZ</header>
+    <div class="layui-form layui-form-pane">
+        <div class="layui-form-item">
+            <label class="layui-form-label" style="margin-left:-50px;width:60px;">留言</label>
+            <div class="layui-input-inline">
+            <textarea  class="layui-textarea" autocomplete="false" placeholder="邮件内容：" required style="width:360px;height:200px;"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item">
+         <button class="layui-btn layui-bg-normal" data-method="send">发送</button>
+             <button class="layui-btn layui-btn-primary" data-method="cancel">取消</button>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.staticfile.org/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script>
+    layui.use(['layer'],function(){
+     let layer = layui.layer;
+     let $ = layui.jquery;
+     let active ={
+       send:function(){
+         let contents = $(".layui-textarea").val();
+         if(contents !== ''){
+           let csrftoken = $.cookie("csrftoken");
+           $.ajax({
+             headers:{
+                "X-CSRFToken": csrftoken,
+                },
+             url:'/user_api/contact_syz_api/',
+             type:'POST',
+             data:{'contents':contents},
+             success:function(result){
+               if(result.status === 'success' && result.code === 200){
+                  parent.layer.msg('发送成功',{time:1200});
+                  }
+               else{
+                  parent.layer.msg('发送失败',{time:1200,});
+                  }
+               }
+           });
+          }
+          else{
+            parent.layer.msg('请输入内容后发送',{icon:3,time:1000,closeBtn:0,offset:'t'});
+            }
+       },
+       cancel:function(){
+        let index = parent.layer.getFrameIndex(window.name);
+        parent.layer.close(index);
+       }
+     };
+
+     $(".layui-btn").click(function(){
+       let othis = $(this);
+       let method = othis.data('method');
+       active[method] ? active[method].call(this,othis):'';
+       });
+
+   });//layui.use over
+</script>
+</body>
+</html>

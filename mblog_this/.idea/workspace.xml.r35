@@ -1,0 +1,1040 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bb75026e-3809-4503-9a27-3511c8217fcb" name="Default Changelist" comment="恢复python包">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comment/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/comment/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comment/models/comment_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/comment/models/comment_models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainsite/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainsite/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainsite/templates/Index.html" beforeDir="false" afterPath="$PROJECT_DIR$/mainsite/templates/Index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mblog/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/mblog/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes/models/notes_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/models/notes_models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes/views/dispaly_articles.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/views/dispaly_articles.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes/views/notes.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes/views/notes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/visualize/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/visualize/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xadmins/test.log" beforeDir="false" afterPath="$PROJECT_DIR$/xadmins/test.log" afterDir="false" />
+    </list>
+    <list id="86942230-0cda-4738-8803-df46e7322d77" name="ignore-on-commit" comment="">
+      <change beforePath="$PROJECT_DIR$/comment/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jobs/migrations/0001_add_notes_jobs.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jobs/migrations/0002_modify_jobs.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainsite/migrations/0001_first_create_table.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainsite/migrations/0002_first_modify_table.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainsite/migrations/0003_second_modify_table.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainsite/migrations/0004_three_modify_table.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainsite/migrations/0005_four_modify_table.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainsite/migrations/0006_add_ip_table.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainsite/migrations/0007_modify_ip_table.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainsite/migrations/0008_modify_message.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainsite/migrations/0009_modify_message.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainsite/migrations/0010_add_notes_praise.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainsite/migrations/0011_add_read_counts.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainsite/migrations/0012_modify_publish_date.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainsite/migrations/0013_add_lagou.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainsite/migrations/0014_modify_lagou.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainsite/migrations/0015_modify_dates.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainsite/migrations/0016_delete_information.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainsite/migrations/0017_creat_information.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainsite/migrations/0018_modify_information.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainsite/migrations/0019_modify_user_name.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainsite/migrations/0020_modify_information.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainsite/migrations/0021_add_imagefield.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainsite/migrations/0022_add_email.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainsite/migrations/0023_delete_message.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainsite/migrations/0024_delete_post.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes/migrations/0002_complete_note.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes/migrations/0003_add_default_note.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes/templates/Analysis_notes.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/Lib/site-packages/django/contrib/admin/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/Lib/site-packages/django/contrib/admin/migrations/0002_logentry_remove_auto_add.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/Lib/site-packages/django/contrib/admin/migrations/0003_logentry_add_action_flag_choices.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visualize/migrations/0001_add_lagou.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visualize/migrations/0002_modify_lagou.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visualize/migrations/0003_modify_lagou.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visualize/migrations/0004_modify_lagou_manager.py" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/notes/admin.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-525">
+              <caret line="36" column="51" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="51" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/notes/models/notes_models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-495">
+              <caret line="57" column="10" selection-start-line="57" selection-start-column="4" selection-end-line="57" selection-end-column="10" />
+              <folding>
+                <element signature="e#0#43#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/notes/templates/Articles.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="13925">
+              <caret line="557" column="49" selection-start-line="557" selection-start-column="30" selection-end-line="557" selection-end-column="49" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#4;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/notes/templates/notes.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="400">
+              <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/notes/views/dispaly_articles.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="18" column="36" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mainsite/views/mainsite_views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="494">
+              <caret line="76" column="100" selection-start-line="76" selection-start-column="100" selection-end-line="76" selection-end-column="100" />
+              <folding>
+                <element signature="e#25#40#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/notes/views/notes.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="418">
+              <caret line="33" column="30" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mblog/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="418">
+              <caret line="271" column="18" selection-start-line="271" selection-start-column="18" selection-end-line="271" selection-end-column="18" />
+              <folding>
+                <element signature="e#304#313#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mainsite/templates/Index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="394">
+              <caret line="25" column="40" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/notes/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="325">
+              <caret line="13" column="64" selection-start-line="13" selection-start-column="64" selection-end-line="13" selection-end-column="64" />
+              <folding>
+                <element signature="e#0#37#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>lOGIN</find>
+      <find>Login</find>
+      <find>验证码</find>
+      <find>add</find>
+      <find>message</find>
+      <find>/user_api/information_api/</find>
+      <find>information_api/</find>
+      <find>form</find>
+      <find>获取头像</find>
+      <find>head_url_api/</find>
+      <find>all_notes_counts</find>
+      <find>all_notes_praise</find>
+      <find>word_cloud</find>
+      <find>all_notes</find>
+      <find>user</find>
+      <find>12</find>
+      <find>me</find>
+      <find>media</find>
+      <find>127</find>
+      <find>window.location.href = '/error_404'</find>
+      <find>user_name</find>
+      <find>write_criticism_api</find>
+      <find>collec</find>
+      <find>insert</find>
+      <find>reply_msgs</find>
+      <find>个人</find>
+      <find>get_rand</find>
+      <find>has</find>
+      <find>read</find>
+      <find>notes</find>
+    </findStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/simpleui/templates/admin/login.html" />
+        <option value="$PROJECT_DIR$/static/src/css/notes/article.css" />
+        <option value="$PROJECT_DIR$/notes/templates/Analysis_notes.html" />
+        <option value="$PROJECT_DIR$/notes/templates/notes_index.html" />
+        <option value="$PROJECT_DIR$/static/src/css/notes/notes.css" />
+        <option value="$PROJECT_DIR$/visualize/views/visualize_api.py" />
+        <option value="$PROJECT_DIR$/visualize/views/visual.py" />
+        <option value="$PROJECT_DIR$/mainsite/views/rewrite_auth_user.py" />
+        <option value="$PROJECT_DIR$/comment/migrations/0001_initial.py" />
+        <option value="$PROJECT_DIR$/xadmin/views/rewrite_auth_user.py" />
+        <option value="$PROJECT_DIR$/xadmin/admin.py" />
+        <option value="$PROJECT_DIR$/xadmin/models/xadmin_models.py" />
+        <option value="$PROJECT_DIR$/../../testadmin/manage.py" />
+        <option value="$PROJECT_DIR$/xadmins/admin.py" />
+        <option value="$PROJECT_DIR$/xadmins/models/xadmin_models.py" />
+        <option value="$PROJECT_DIR$/xadmins/views/rewrite_auth_user.py" />
+        <option value="$PROJECT_DIR$/../../mblog/python/Lib/site-packages/django/contrib/auth/models.py" />
+        <option value="$PROJECT_DIR$/static/src/css/mainsite/index.css" />
+        <option value="$PROJECT_DIR$/mainsite/urls.py" />
+        <option value="$PROJECT_DIR$/mainsite/info_login.log" />
+        <option value="$PROJECT_DIR$/simpleui/static/admin/simpleui-x/css/login.css" />
+        <option value="$PROJECT_DIR$/../../mblog/python/Lib/site-packages/django/contrib/admin/options.py" />
+        <option value="$PROJECT_DIR$/../../mblog/python/Lib/site-packages/django/contrib/auth/__init__.py" />
+        <option value="$PROJECT_DIR$/visualize/models/visualize_models.py" />
+        <option value="$PROJECT_DIR$/simpleui/templates/admin/object_history.html" />
+        <option value="$PROJECT_DIR$/mainsite/templates/Login.html" />
+        <option value="$PROJECT_DIR$/mainsite/templates/Register.html" />
+        <option value="$PROJECT_DIR$/xadmins/rewrite_auth_user.py" />
+        <option value="$PROJECT_DIR$/mainsite/templates/FirstHead.html" />
+        <option value="$PROJECT_DIR$/mainsite/templates/Basic_information.html" />
+        <option value="$PROJECT_DIR$/mainsite/models/mainsite_models.py" />
+        <option value="$PROJECT_DIR$/comment/urls.py" />
+        <option value="$PROJECT_DIR$/mainsite/views/mainsite_api.py" />
+        <option value="$PROJECT_DIR$/comment/templates/message_board.html" />
+        <option value="$PROJECT_DIR$/comment/views/message_board.py" />
+        <option value="$PROJECT_DIR$/notes/templates/Articles.html" />
+        <option value="$PROJECT_DIR$/mblog/urls.py" />
+        <option value="$PROJECT_DIR$/notes/views/notes_api.py" />
+        <option value="$PROJECT_DIR$/../../mblog/python/Lib/site-packages/django/contrib/admin/decorators.py" />
+        <option value="$PROJECT_DIR$/visualize/admin.py" />
+        <option value="$PROJECT_DIR$/mainsite/admin.py" />
+        <option value="$PROJECT_DIR$/comment/admin.py" />
+        <option value="$PROJECT_DIR$/comment/models/comment_models.py" />
+        <option value="$PROJECT_DIR$/mblog/settings.py" />
+        <option value="$PROJECT_DIR$/notes/admin.py" />
+        <option value="$PROJECT_DIR$/notes/templates/notes.html" />
+        <option value="$PROJECT_DIR$/notes/views/notes.py" />
+        <option value="$PROJECT_DIR$/mainsite/templates/Index.html" />
+        <option value="$PROJECT_DIR$/notes/models/notes_models.py" />
+        <option value="$PROJECT_DIR$/notes/views/dispaly_articles.py" />
+        <option value="$PROJECT_DIR$/mainsite/views/mainsite_views.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-39" />
+    <option name="y" value="73" />
+    <option name="width" value="1943" />
+    <option name="height" value="1103" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+    <ConfirmationsSetting value="2" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="mblog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mblog" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mblog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mblog" type="462c0819:PsiDirectoryNode" />
+              <item name="comment" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mblog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mblog" type="462c0819:PsiDirectoryNode" />
+              <item name="comment" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mblog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mblog" type="462c0819:PsiDirectoryNode" />
+              <item name="mainsite" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mblog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mblog" type="462c0819:PsiDirectoryNode" />
+              <item name="mainsite" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mblog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mblog" type="462c0819:PsiDirectoryNode" />
+              <item name="mainsite" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mblog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mblog" type="462c0819:PsiDirectoryNode" />
+              <item name="mblog" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mblog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mblog" type="462c0819:PsiDirectoryNode" />
+              <item name="notes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mblog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mblog" type="462c0819:PsiDirectoryNode" />
+              <item name="notes" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mblog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mblog" type="462c0819:PsiDirectoryNode" />
+              <item name="notes" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mblog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mblog" type="462c0819:PsiDirectoryNode" />
+              <item name="notes" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mblog" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mblog" type="462c0819:PsiDirectoryNode" />
+              <item name="visualize" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="last.edited.regexp" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../testadmin" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\syz\virtualenvs\MyDjango\svn_mblog\mblog" />
+      <recent name="D:\syz\virtualenvs\MyDjango\svn_mblog\mblog\python\Lib\site-packages" />
+      <recent name="D:\syz\virtualenvs\MyDjango\mblog\mainsite\login\images" />
+      <recent name="D:\syz\virtualenvs\MyDjango\mblog\notes\templates" />
+      <recent name="D:\syz\virtualenvs\MyDjango\mblog\mainsite\templates" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\syz\virtualenvs\MyDjango\svn_mblog\mblog\xadmins" />
+      <recent name="D:\syz\virtualenvs\MyDjango\svn_mblog\mblog\xadmin\views" />
+      <recent name="D:\syz\virtualenvs\MyDjango\svn_mblog\mblog" />
+      <recent name="D:\syz\virtualenvs\MyDjango\mblog\static" />
+      <recent name="D:\syz\virtualenvs\MyDjango\mblog\static\image" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.0001_initial">
+    <configuration name="多进程" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="mblog" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/多进程.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="0001_initial" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="mblog" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python/Lib/site-packages/django/contrib/admin/migrations" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python/Lib/site-packages/django/contrib/admin/migrations/0001_initial.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="asyncio" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="mblog" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="D:\syz\virtualenvs\MyDjango\mblog\asyncio_实例.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="asyncio_实例" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="mblog" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/asyncio_实例.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="geo" type="PythonConfigurationType" factoryName="Python">
+      <module name="mblog" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python/Lib/site-packages/pyecharts/charts/basic_charts" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python/Lib/site-packages/pyecharts/charts/basic_charts/geo.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="queue多线程" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="mblog" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/queue多线程.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.geo" />
+      <item itemvalue="Python.queue多线程" />
+      <item itemvalue="Python.asyncio" />
+      <item itemvalue="Python.多进程" />
+      <item itemvalue="Python.asyncio_实例" />
+      <item itemvalue="Python.0001_initial" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.0001_initial" />
+        <item itemvalue="Python.asyncio_实例" />
+        <item itemvalue="Python.asyncio" />
+        <item itemvalue="Python.多进程" />
+        <item itemvalue="Python.queue多线程" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration" cleanupOnStartRun="true">
+    <configuration>C:\Users\ASUS\AppData\Roaming\Subversion</configuration>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="SvnFileUrlMappingImpl">
+    <option name="myMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\syz\virtualenvs\MyDjango\svn_mblog\mblog" />
+          <option name="myCopyRoot" value="D:\syz\virtualenvs\MyDjango\svn_mblog\mblog" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+    <option name="myMoreRealMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\syz\virtualenvs\MyDjango\svn_mblog\mblog" />
+          <option name="myCopyRoot" value="D:\syz\virtualenvs\MyDjango\svn_mblog\mblog" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bb75026e-3809-4503-9a27-3511c8217fcb" name="Default Changelist" comment="" />
+      <created>1575562926370</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1575562926370</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1478" height="878" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19808744" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.44083226" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.41352406" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3979194" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32899868" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32899868" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32769832" />
+      <window_info anchor="bottom" id="Python Console" order="10" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32769832" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19822283" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.44083226" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.41352406" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3979194" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32899868" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32769832" />
+      <window_info anchor="bottom" id="Python Console" order="10" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32769832" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.css" />
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.js" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="恢复python包" />
+    <option name="LAST_COMMIT_MESSAGE" value="恢复python包" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/simpleui/static/admin/simpleui-x/css/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5550" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simpleui/static/admin/simpleui-x/css/index.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3000" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simpleui/static/admin/simpleui-x/css/index.css.map">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comment/info_comment.log">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mainsite/info_login.log">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mainsite/templates/Login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="103" column="23" selection-start-line="103" selection-start-column="23" selection-end-line="103" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mainsite/templates/Register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1103">
+          <caret line="179" column="8" lean-forward="true" selection-start-line="179" selection-start-column="8" selection-end-line="179" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mainsite/templates/FirstHead.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="353" column="8" selection-start-line="353" selection-start-column="8" selection-end-line="353" selection-end-column="8" />
+          <folding>
+            <element signature="n#style#0;n#hr#0;n#div#2;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/visualize/models/visualize_models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="23" column="23" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../mblog/python/Lib/site-packages/django/contrib/auth/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="384" column="6" selection-start-line="384" selection-start-column="6" selection-end-line="384" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comment/views/views.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comment/templates/message_board.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="357" column="30" selection-start-line="357" selection-start-column="9" selection-end-line="357" selection-end-column="30" />
+          <folding>
+            <element signature="n#style#0;n#button#0;n#form#0;n#div#3;n#div#0;n#li#0;n#div#0;n#ul#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comment/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="10" column="61" selection-start-line="10" selection-start-column="61" selection-end-line="10" selection-end-column="61" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mblog/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="42" column="61" selection-start-line="42" selection-start-column="61" selection-end-line="42" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notes/views/notes_api.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3761">
+          <caret line="197" column="28" selection-start-line="197" selection-start-column="28" selection-end-line="197" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xadmins/models/xadmin_models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xadmins/rewrite_auth_user.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xadmins/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comment/views/message_board.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="761">
+          <caret line="140" column="39" lean-forward="true" selection-start-line="140" selection-start-column="39" selection-end-line="140" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mainsite/views/mainsite_api.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5475">
+          <caret line="238" column="16" selection-start-line="238" selection-start-column="7" selection-end-line="238" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mainsite/templates/Basic_information.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2025">
+          <caret line="81" selection-start-line="81" selection-end-line="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jobs/apps.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mainsite/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jobs/urls.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jobs/tests.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jobs/models/jobs_models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="568">
+          <caret line="28" column="31" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/views.svn000.tmp/mainsite_views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="114" column="29" selection-start-line="114" selection-start-column="29" selection-end-line="114" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-902" />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/urls.py-revHEAD.svn001.tmp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-377" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../mblog/python/Lib/site-packages/django/contrib/admin/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../mblog/python/Lib/site-packages/django/contrib/admin/decorators.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="26" column="12" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../mblog/python/Lib/site-packages/django/db/models/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../mblog/python/Lib/site-packages/django/db/models/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="402" column="6" selection-start-line="402" selection-start-column="6" selection-end-line="402" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../mblog/python/Lib/site-packages/django/contrib/admin/options.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="112" column="4" selection-start-line="112" selection-start-column="4" selection-end-line="112" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mainsite/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="619">
+          <caret line="77" column="37" lean-forward="true" selection-start-line="77" selection-start-column="37" selection-end-line="77" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comment/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1125">
+          <caret line="45" column="49" selection-start-line="45" selection-start-column="49" selection-end-line="45" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/comment/models/comment_models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="12" column="51" selection-start-line="12" selection-start-column="51" selection-end-line="12" selection-end-column="51" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python/Lib/site-packages/django/contrib/admin/options.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3428">
+          <caret line="1468" column="34" selection-start-line="1468" selection-start-column="34" selection-end-line="1468" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jobs/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/visualize/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="625">
+          <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="30" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mainsite/models/mainsite_models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="14" column="8" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notes/views/notes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="33" column="30" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mainsite/templates/Index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="25" column="40" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notes/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="13" column="64" selection-start-line="13" selection-start-column="64" selection-end-line="13" selection-end-column="64" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mblog/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="271" column="18" selection-start-line="271" selection-start-column="18" selection-end-line="271" selection-end-column="18" />
+          <folding>
+            <element signature="e#304#313#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notes/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-525">
+          <caret line="36" column="51" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="51" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notes/templates/notes.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notes/templates/Articles.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="13925">
+          <caret line="557" column="49" selection-start-line="557" selection-start-column="30" selection-end-line="557" selection-end-column="49" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#4;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notes/models/notes_models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-495">
+          <caret line="57" column="10" selection-start-line="57" selection-start-column="4" selection-end-line="57" selection-end-column="10" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notes/views/dispaly_articles.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="18" column="36" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mainsite/views/mainsite_views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="76" column="100" selection-start-line="76" selection-start-column="100" selection-end-line="76" selection-end-column="100" />
+          <folding>
+            <element signature="e#25#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

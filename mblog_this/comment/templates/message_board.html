@@ -1,0 +1,498 @@
+{% extends 'FirstHead.html' %}
+{% block contents %}
+
+{% load static %}
+<!-- 留言板 -->
+<link rel="stylesheet" type="text/css" href="{% static 'src/css/comment/msg.css' %}">
+<div style="width:95%">
+    <ul class="layui-timeline" style="margin-top:30px">
+        {% for msg_id,msg in msgs.items %}
+        {% if forloop.first %}
+     <blockquote class="layui-elem-quote">留言册</blockquote>
+          <div class="OutShadow">
+      {% endif %}
+  <li class="layui-timeline-item">
+    <i class="layui-icon layui-timeline-axis">&#xe735;</i>
+    <div class="layui-timeline-content">
+<!--{% cycle 'color:#FF5722;font-size:16px;font-family:楷体;' 'color:#009688;font-size:16px;font-family:宋体;' 'color:#1E9FFF;font-size:16px;font-weight: bold;' %}-->
+    <div class="layui-row">
+     <div class="layui-col-md5">
+        <div style="float:left;">
+                 <span><img src="{{msg.msg_author_head_image}}" class="head_image"></span>
+                 <span class="msg_author">{{msg.msg_author_name}}</span>&nbsp;&nbsp;&nbsp;
+                 <span class="msg_date">{{msg.msg_date|date:"Y-m-d H:i"}}</span>
+          </div>
+     </div>
+    </div>
+        <div class="layui-row">
+            <div class="layui-col-md9 msg_content">
+                {{msg.msg_message}}
+            </div>
+            <div class="layui-col-md3" style="float:right">
+          <!--这里要美化button,下面是点赞不用改-->
+             <button type="button" class="layui-btn layui-icon layui-btn-primary praise layui-icon-praise"><img src="" style="position:absolute;width:20px;height:auto;"></button>
+              <span class="praises">{{msg.msg_praise_counts}}</span>
+              <button type="button" class="layui-btn layui-icon layui-btn-primary npraise layui-icon-tread"><img src="" style="position:absolute;width:20px;height:auto;"></button>
+              <span class="npraises">{{msg.msg_tread_counts}}</span>
+                  <span class="msg_id" style="font-size:1px;display:none;">{{msg_id}}</span>
+          </div>
+        </div>
+        <div class="replys-style">
+        {% for reply in msg.replys %}
+           <div class = replay_container>
+               <div class="layui-row">
+                   <div class="layui-col-md7 ">
+                       <div class="reply_body">
+                              <span><img src="{{reply.reply_head_image}}" class="head_image"></span>
+                              <span class="msg_author">{{reply.reply_author}}</span>&nbsp;&nbsp;&nbsp;
+                              <span class="msg_date">{{reply.reply_dates|date:"Y-m-d H:i"}}</span>
+                              <p class="reply_content">{{reply.reply_content}}</p>
+                            <hr class="hr_style">
+                       </div>
+                   </div>
+                   <div class="layui-col-md3 thread_and_praise">
+                     <button type="button" class="layui-btn layui-icon layui-btn-primary reply_praise layui-icon-praise"><img src="" style="position:absolute;width:20px;height:auto;"></button>
+                     <span class="praises">{{reply.reply_praise_counts}}</span>
+                     <button type="button" class="layui-btn layui-icon layui-btn-primary reply_npraise layui-icon-tread"><img src="" style="position:absolute;width:20px;height:auto;"></button>
+                     <span class="npraises">{{reply.reply_tread_counts}}</span>
+                     <span class="msg_id" style="font-size:1px; display: none">{{reply.reply_id}}</span>
+                   </div>
+               </div>
+           </div>
+        {% endfor %}
+            </div>
+        <div class="layui-row" id="reply_circle">
+            <span class="msg_id" style="font-size:1px; display: none">{{msg_id}}</span>
+          <span class="msg_reply layui-icon layui-icon-add-circle-fine" data-method="msg_reply_">回复</span>
+            {% csrf_token %}
+          <form class="layui-form layui-row msg_reply_content" style="display:none">
+               <textarea class="layui-textarea" style="width:80%;" autocomplete="false" placeholder="亲，请在此回复!" lay-verify="required" id="reply_contents"></textarea>
+              <!-- 替换type='submit'为lay-submit,是的form监听submit有效-->
+               <button class="layui-btn layui-btn-xs submit" style="background-color:#F4A460;" lay-filter="reply_submit" lay-submit>提交</button>
+               <button type="reset" class="layui-btn layui-btn-primary layui-btn-xs">重置</button>
+          </form>
+        </div>
+         <hr class="hr_style">
+
+  </div>
+  </li>
+    {% if forloop.last %}
+              </div>
+          <blockquote class="layui-elem-quote" id="last_msg">下方留言哦~</blockquote>
+     {% endif %}
+        {% endfor %}
+        <!-- 留言 -->
+
+            <hr class="layui-bg-blue" style="height:2px">
+            <fieldset class="layui-elem-field " style="margin-top: 30px;color:#0a0a0a;">
+              <legend>欢迎您{{user}}</legend>
+                <br>
+                <br>
+             </fieldset>
+            <form class="layui-form">
+                <div class="layui-form-item">
+                    <label class="layui-form-label" style="font-size:18px">留言框：</label>
+                    <div class="layui-input-block">
+                <textarea  class="layui-textarea" autocomplete="false" placeholder="亲，请输入对博主的留言~请输入内容不超过50个字" name="write_message" id="write_message" lay-verify="required"></textarea>
+                    </div>
+                </div>
+                  <div class="layui-form-item">
+                    <div class="layui-input-block">
+                       <button class="layui-btn" lay-submit lay-filter="leave_msg" id="leave_msg_">立即留言</button>
+                       <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+         </div>
+            </form>
+
+
+
+</ul>
+</div>
+
+
+<script>
+
+
+var post_url = "/comment/user_msg/modify_msg_times/";
+
+layui.use(['layer','form'],function(){
+   var $ = layui.jquery;
+   var layer = layui.layer;
+   var form = layui.form;
+   $(".msg_id").hide();
+
+    let next_url = window.location.pathname;  //用于回调跳转
+
+$(document).ready(function(){
+    //留言点赞
+    $(".praise").one('click',
+    function() {
+        //var url_ = "/user_api/msg_api/?format=json"; //接口地址
+        let num = Math.floor(Math.random() * 3 + 1);
+        let this_ = $(this);
+        let praise_counts = parseInt(this_.siblings(".praises").text()) + 1; //获取指定同胞的text文本值
+        let datas = {
+            'praise_counts': praise_counts,
+            'msg_id': this_.siblings(".msg_id").text(),
+            'function':'msg'
+        };
+        var this_img = $(this).children("img");
+        var init_top = this_img.css("top"); //获取img初始位置图片
+        this_img.attr("src", '/static/image/' + num + '.png');
+        this_img.animate({
+            top: '-50px',
+            opacity: '0',
+            height: '20px',
+            width: 'auto',
+        },
+        666,
+        function() {
+            this_.removeClass('layui-icon-praise', ''); //删除button之前的文本
+            this_img.animate({ //回到原位
+                top: init_top,
+                opacity: '1',
+            },
+            1);
+            this_img.attr("src", '/static/image/yizan.png');
+        });
+        this_.siblings(".praises").text(praise_counts); //增加点赞数
+        $.ajax({
+            url: post_url,
+            data: datas,
+            type: 'POST',
+            error:function(){
+           //  window.location.href = '/error_404';
+            }
+        });
+
+    });
+
+    //留言差评
+    $(".npraise").one('click',
+    function() {
+        var this_ = $(this);
+        var num = Math.floor(Math.random() * 3 + 1);
+        var tread_counts = parseInt(this_.siblings(".npraises").text()) + 1;
+        var datas = {
+            'tread_counts': tread_counts,
+            'msg_id': this_.siblings(".msg_id").text(),
+            'function':'msg'
+        }
+        var this_img = $(this).children("img");
+        var init_top = this_img.css("top"); //获取img初始位置图片
+        this_img.attr("src", '/static/image/' + num + '.png');
+        this_img.animate({
+            top: '-50px',
+            opacity: '0',
+            height: '20px',
+            width: 'auto',
+        },
+        666,
+        function() {
+            this_.removeClass('layui-icon-tread', ''); //删除button之前的文本
+            this_img.animate({ //回到原位
+                top: init_top,
+                opacity: '1',
+            },
+            1);
+            this_img.attr("src", '/static/image/zan.png');
+        });
+        this_.siblings(".npraises").text(tread_counts);
+        $.ajax({
+            url: post_url,
+            data: datas,
+            type: 'POST',
+            error:function(){
+               //window.location.href = '/error_404';
+            }
+        });
+    });
+
+    //回复点赞
+    $(".reply_praise").one('click',
+    function() {
+        //var url_ = "/comment/user_api/msg_api/?format=json"; //接口地址
+        var num = Math.floor(Math.random() * 3 + 1);
+        var this_ = $(this);
+        var praise_counts = parseInt(this_.siblings(".praises").text()) + 1; //获取指定同胞的text文本值
+        var datas = {
+            'praise_counts': praise_counts,
+            'msg_id': this_.siblings(".msg_id").text(),
+            'function':'reply'
+        }
+        var this_img = $(this).children("img");
+        var init_top = this_img.css("top"); //获取img初始位置图片
+        this_img.attr("src", '/static/image/' + num + '.png');
+        this_img.animate({
+            top: '-50px',
+            opacity: '0',
+            height: '20px',
+            width: 'auto',
+        },
+        666,
+        function() {
+            this_.removeClass('layui-icon-praise', ''); //删除button之前的文本
+            this_img.animate({ //回到原位
+                top: init_top,
+                opacity: '1',
+            },
+            1);
+            this_img.attr("src", '/static/image/yizan.png');
+        });
+        this_.siblings(".praises").text(praise_counts); //增加点赞数
+        $.ajax({
+            url: post_url,
+            data: datas,
+            type: 'POST',
+            error:function(){
+             // window.location.href = '/error_404';
+            }
+        });
+
+    });
+
+    //回复差评
+    $(".reply_npraise").one('click',
+    function() {
+        var this_ = $(this);
+        var num = Math.floor(Math.random() * 3 + 1);
+        var tread_counts = parseInt(this_.siblings(".npraises").text()) + 1;
+        var datas = {
+            'tread_counts': tread_counts,
+            'msg_id': this_.siblings(".msg_id").text(),
+            'function':'reply'
+        }
+        var this_img = $(this).children("img");
+        var init_top = this_img.css("top"); //获取img初始位置图片
+        this_img.attr("src", '/static/image/' + num + '.png');
+        this_img.animate({
+            top: '-50px',
+            opacity: '0',
+            height: '20px',
+            width: 'auto',
+        },
+        666,
+        function() {
+            this_.removeClass('layui-icon-tread', ''); //删除button之前的文本
+            this_img.animate({ //回到原位
+                top: init_top,
+                opacity: '1',
+            },
+            1);
+            this_img.attr("src", '/static/image/zan.png');
+        });
+        this_.siblings(".npraises").text(tread_counts);
+        $.ajax({
+            url: post_url,
+            data: datas,
+            type: 'POST',
+            error:function(){
+            // window.location.href = '/error_404';
+             }
+        });
+    });
+
+
+    // 下拉回复框
+    $(".layui-timeline").on('click','.msg_reply', function(){
+       let this_ = $(this);
+       this_.siblings(".msg_reply_content").slideToggle(150);
+    });
+
+
+
+
+
+    //回复dom
+    function reply_new_user(head_image,reply_author,reply_date,reply_content,reply_id){
+      var reply = '<div class = replay_container>';
+      reply += '<div class="layui-row">';
+      reply += '<div class="layui-col-md7">';
+      reply += '<div class="reply_body">';
+      reply += '<span><img src="'+ head_image+'" class="head_image"></span>';
+      reply += '<span class="msg_author">'+reply_author+'</span>';
+      reply += '<span class="msg_date">'+reply_date+'</span>';
+      reply += '<p class="reply_content">'+reply_content+'</p>';
+      reply += '</div></div>';
+      reply += '<div class="layui-col-md3 thread_and_praise">';
+      reply += '<button type="button" class="layui-btn layui-icon layui-btn-primary reply_praise layui-icon-praise"><img src="" style="position:absolute;width:20px;height:auto;"></button>';
+      reply += '<span class="praises">0</span>';
+      reply += '<button type="button" class="layui-btn layui-icon layui-btn-primary reply_npraise layui-icon-tread"><img src="" style="position:absolute;width:20px;height:auto;"></button>';
+      reply += '<span class="npraises">0</span>';
+      reply += '<span class="msg_id" style="font-size:1px; display: none">'+ reply_id+'</span>';
+      reply += '</div></div></div> <hr class="hr_style">';
+      return reply;
+    }
+    //监听form回复表单
+    form.on('submit(reply_submit)',function(data){
+       let aim_button = $(data.elem);  // 获取点击的button对象
+       let new_reply = $("#reply_circle");
+       let content = aim_button.siblings(".layui-textarea").val();
+       let reply_url = '/comment/user_msg/write_reply/';
+       let reply_data = {'reply_content':aim_button.siblings('#reply_contents').val(),'msg_id':aim_button.parent().siblings('.msg_id').text()};
+       {% if request.user.is_authenticated %}
+       $.ajax({
+         url:reply_url,
+         type:'POST',
+         data:reply_data,
+         headers: {"X-CSRFToken":$.cookie("csrftoken")},
+         success:function(data){
+         if(data.status === 'success'){
+               iziToast.success({
+                        title: '回复',
+                        timeout: 1500,
+                        transition:'fadeInDown',
+                        position: 'topLeft',
+                        message: '感谢您的回复'
+                });
+            reply_content_new = reply_new_user(data.head_image,data.reply_author,data.date,data.reply_content,data.reply_id);
+            aim_button.parent().parent().before(reply_content_new);
+            aim_button.siblings(".layui-textarea").val('');
+            }
+         else{
+                iziToast.error({
+                    title: '错误',
+                    message: '回复出错了',
+                    position: 'topLeft',
+                });
+           }
+         },
+         error:function() {
+             iziToast.error({
+                 title: '错误',
+                 message: '回复出错了',
+                 position: 'topLeft',
+             });
+         }
+       });
+        {% else %}
+       layer.open({
+         type:2,
+         title:'登录',
+         content:'/mainsite/login/?next='+next_url,
+         closeBtn:0,
+         shade:0.3,
+         area:['500px','90%'],
+         shadeClose:false,
+         id:'login_s',
+         btnAlign :'c',
+         resize:false,
+         });
+        $(".msg_reply_content").slideUp(1);
+         {% endif %}
+        return false;  //表示触发表单后是否刷新页面，false为不刷新
+    });
+
+
+    //留言dom
+    function msg_user(head_image,msg_date,msg_author,msg_content,msg_id){
+      var msg = '<div class="OutShadow">';
+      msg += '<li class="layui-timeline-item">';
+      msg += '<i class="layui-icon layui-timeline-axis">&#xe735;</i>';
+      msg += '<div class="layui-timeline-content">';
+      //留言基本信息
+      msg += '<div class="layui-row">';
+      msg += '<div class="layui-col-md5">';
+      msg += '<div style="float:left;">';
+      msg += '<span><img src="'+head_image+'" class="head_image"></span>';
+      msg += '<span class="msg_author">'+msg_author+'</span>&nbsp;&nbsp;&nbsp;';
+      msg += '<span class="msg_date">'+msg_content+'</span>';
+      msg += '</div></div></div>';
+      //留言内容
+      msg += '<div class="layui-row">';
+      msg += '<div class="layui-col-md9">'+msg_content+'</div>';
+      //点赞
+      msg += '<div class="layui-col-md3" style="float:right">';
+      msg += '<button type="button" class="layui-btn layui-icon layui-btn-primary praise layui-icon-praise"><img src="" style="position:absolute;width:20px;height:auto;"></button>';
+      msg += '<span class="praises">0</span>';
+      msg += '<button type="button" class="layui-btn layui-icon layui-btn-primary npraise layui-icon-tread" ><img src="" style="position:absolute;width:20px;height:auto;"></button>';
+      msg += '<span class="npraises">0</span>';
+      msg += '<span class="msg_id" style="font-size:1px;display:none">'+msg_id+'</span>';
+      msg += '</div><hr class="hr_style"></div>';
+      msg += '<div class="layui-row" id="reply_circle">';
+      msg += '<span class="msg_reply layui-icon layui-icon-add-circle-fine" data-method="msg_reply_">回复</span>';
+      msg += '<form class="layui-form layui-row msg_reply_content" style="display:none">'
+      msg += ' <textarea class="layui-textarea" autocomplete="false" placeholder="亲，请在此回复!" lay-verify="required"></textarea>';
+      msg += '<button class="layui-btn layui-btn-xs" style="background-color:#F4A460;" lay-filter="reply_submit" lay-submit>提交</button>';
+      msg += '<button type="reset" class="layui-btn layui-btn-primary layui-btn-xs">重置</button>';
+      msg += '</form></div></div></li></div>'
+      return msg;
+    }
+
+
+    //判断是否为游客登录
+    form.on('submit(leave_msg)',function(data) {
+        var aim_button = $(data.elem);  // 获取点击的button对象
+        //typeof判断类型
+        var user_name = $("#user_logined_pc").text().trim();  // trim去掉空格
+        {% if not request.user.is_authenticated %}
+        layer.msg('请登录后操作', {
+            icon: 2,
+            offset: 't',
+            area: '100px',
+            time: 888,
+            closeBtn: 0,
+        });
+        layer.open({
+            type: 2,
+            title: '登录',
+            content: '/mainsite/login/',
+            closeBtn: 0,
+            shade: 0.3,
+            area: ['500px', '90%'],
+            shadeClose: false,
+            id: 'login_s',
+            //btn:['登录','取消'],
+            btnAlign: 'c',
+            resize: false,
+        });
+        {% else %}
+        let msg_url = '/comment/user_msg/write_message/';
+        let message = $("#write_message").val();
+        let msg_data = {'write_message': message};
+        $.ajax({
+            url: msg_url,
+            type: 'POST',
+            data: msg_data,
+            headers: {"X-CSRFToken": $.cookie("csrftoken")}, // 添加防跨域伪造请求
+            success: function (data) {
+                if (data.status === 'success') {
+                    iziToast.success({
+                        title: '留言',
+                        timeout: 1500,
+                        transition:'fadeInDown',
+                        position: 'topLeft',
+                        message: '感谢您的留言'
+                    });
+                    var msg_content = msg_user(data.head_image, data.date, data.msg_author, data.msg_content, data.msg_id);
+                    $("#write_message").val('');
+                    aim_button.parents().siblings('#last_msg').before(msg_content);
+                } else {
+                    iziToast.error({
+                        title: '错误',
+                        message: '评论出错了',
+                        position: 'topLeft',
+                    });
+                }
+            },
+            error: function () {
+                iziToast.error({
+                    title: '错误',
+                    message: '评论出错了',
+                    position: 'topLeft',
+                });
+            }
+        });
+        {% endif %}
+        return false;
+    });
+
+
+});  //ready
+
+});  //layui.use结束
+
+</script>
+
+
+{% endblock %}

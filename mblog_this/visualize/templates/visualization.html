@@ -1,0 +1,310 @@
+{% extends 'FirstHead.html' %}
+{% block visual_contents %}
+<br />
+  <fieldset class="layui-elem-field layui-field-title site-demo-button" style="margin-top: 30px;">
+   <!--分组-->
+   <legend>{{title}}</legend>
+  </fieldset>
+  <div class="layui-row">
+    {% if category == 'score_compare' %}
+       <div class="layui-col-md10 score_compare">
+      {{data|safe}}
+      </div>
+     {% elif category == 'process_scheduling' %}
+       <div class="layui-col-md8 process_scheduling">
+           {{data|safe}}
+       </div>
+    {% elif category == 'lagou_analysis' %}
+
+   <div class="layui-col-md8  lagou_analysis_scale">
+     {{scale|safe}}
+   </div>
+
+   <hr class="layui-bg-red" />
+   <div class="layui-col-md8  lagou_analysis_domain">
+     {{domain|safe}}
+   </div>
+
+   <hr class="layui-bg-red" />
+   <div class="layui-col-md8  lagou_analysis_treatment">
+     {{treatment|safe}}
+   </div>
+
+   <hr class="layui-bg-red" />
+   <div class="layui-col-md8  lagou_analysis_financing">
+     {{financing|safe}}
+   </div>
+
+   <hr class="layui-bg-red" />
+   <div class="layui-col-md8  lagou_analysis_education">
+     {{education|safe}}
+   </div>
+
+
+      {% elif category == 'lagou_display' %}
+   <!--利用script 可以不像div直接显示出来！！！-->
+         <div class="layui-col-md8  lagou_analysis_salary">
+    {{salary|safe}}
+   </div>
+    <hr class="layui-bg-red" />
+   <div class="layui-card" style="width:92.3%;" lay-filter="">
+    <div class="layui-card-header">
+     搜索栏
+    </div>
+    <div class="layui-card-body">
+     <div class="layui-form">
+      <div class="layui-form-item">
+          <!-- first_row_start-->
+       <div class="layui-row">
+        <div class="layui-col-md3" id="city_">
+         <label class="layui-form-label">城市：</label>
+         <div class="layui-input-inline">
+          <select name="city" id="city" placeholder="请选择城市" autocomplete="off">
+              <option value="">请选择城市</option>
+              <option value="北京">北京</option>
+              <option value="上海">上海</option>
+              <option value="深圳">深圳</option>
+              <option value="广州">广州</option>
+              <option value="杭州">杭州</option>
+              <option value="成都">成都</option>
+              <option value="南京">南京</option>
+              <option value="武汉">武汉</option>
+              <option value="西安">西安</option>
+              <option value="厦门">厦门</option>
+              <option value="长沙">长沙</option>
+              <option value="苏州">苏州</option>
+              <option value="天津">天津</option>
+          </select>
+         </div>
+        </div>
+        <div class="layui-col-md3" id="salary_">
+         <label class="layui-form-label">月薪范围：</label>
+         <div class="layui-input-inline">
+          <select name="salary" id="salary" placeholder="请选择月薪" autocomplete="off">
+              <option value="">请选择月薪范围</option>
+              <option value="2-5">2k-5k</option>
+              <option value="5-10">5k-10k</option>
+              <option value="10-15">10k-15k</option>
+              <option value="15-20">15k-20k</option>
+              <option value="20-25">20k-25k</option>
+              <option value="25-30">25k-30k</option>
+              <option value="30-35">30k-35k</option>
+              <option value="35-40">35k-40k</option>
+              <option value="40-45">40k-45k</option>
+              <option value="45-50">45k-50k</option>
+              <option value="50-55">50k-55k</option>
+          </select>
+         </div>
+        </div>
+            <div class="layui-col-md3" id="education_">
+         <label class="layui-form-label">学历要求：</label>
+         <div class="layui-input-inline">
+          <select name="education" id="education" placeholder="请选择学历要求" autocomplete="off">
+              <option value="">请选择学历要求</option>
+              <option value="大专">大专</option>
+              <option value="本科">本科</option>
+              <option value="硕士">研究生</option>
+              <option value="博士">博士</option>
+          </select>
+         </div>
+        </div>
+           <div class="layui-col-md3" id="experience_">
+         <label class="layui-form-label">经验要求：</label>
+         <div class="layui-input-inline">
+          <select name="experience" id="experience" placeholder="请选择经验要求" autocomplete="off">
+              <option value="">请选择经验要求</option>
+              <option value="0">应届毕业生</option>
+              <option value="1-">1年以下</option>
+              <option value="1-3">1-3年</option>
+              <option value="3-5">3-5年</option>
+              <option value="5-10">5-10年</option>
+              <option value="10+">10年以上</option>
+              <option value="666">不限</option>
+          </select>
+         </div>
+        </div>
+       </div>
+          <!-- first_row_over-->
+     <!--second_row_start-->
+          <div class="layui-row" style="margin-top:15px;">
+      <div class="layui-form-item">
+       <p class="">关键词：</p>
+       <div class="layui-input-inline"></div>
+       <input type="checkbox" value="python" id="python" title="Python" />
+       <input type="checkbox" value="java" id="java" title="Java" />
+       <input type="checkbox" value="c#" id="c#" title="C#" />
+       <input type="checkbox" value="c++" id="c++" title="C++" />
+       <input type="checkbox" value="前端" id="web_client" title="web前端" />
+       <input type="checkbox" value="后端" id="web_server" title="web后端" />
+       <input type="checkbox" value="机器学习" id="machine_learning" title="机器学习" />
+       <input type="checkbox" value="人工智能" id="artificial_intelligence" title="人工智能" />
+       <input type="checkbox" value="大数据" id="big_data" title="大数据" />
+      </div>
+     </div>
+           <!--second_row_over-->
+          <!--third_row_start-->
+          <div class="layui-row" style="margin-top:15px;text-align:center">  <!--让按钮居中或者style="display:block;margin:0px auto"-->
+                  <button class="layui-btn layui-btn-orange" data-method="search_job" id="search_job_">学习吧,少年！</button>
+          </div>
+          <!--third_row_over-->
+
+    </div>
+   </div>
+        </div>
+         </div>
+         <!--card over-->
+      <!--数据表显示-->
+   <table id="lagou_table" lay-filter="lagou_tables"></table>
+       {% else %}
+         domain
+       {% endif %}
+</div>  <!--结束-->
+
+
+<!--工具条-->
+<!--可以将html放入script中，只需要设置其type-->
+<script type="text/html" id="tools">
+  <a class="layui-btn layui-btn-xs" lay-event="detail">查看</a>
+  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+<script>
+
+    layui.use(['table','layer','jquery',],function(){
+        var table = layui.table;
+        var layer = layui.layer;
+        var $ = layui.jquery;
+
+        //可视化tips
+            $(".lagou_analysis_scale").mouseenter(function(){
+           layer.tips('在2020年一月份的30000+数据中，大部分企业人数都在5000-2000+,都包含多个岗位。','.lagou_analysis_scale',{tips:[2,'#000000'],time:10000});
+          });
+            $(".lagou_analysis_domain").mouseenter(function(){
+           layer.tips('在2020年一月份的30000+数据中，最火的应用领域在移动互联网服务，可见互联网在21世纪对每个企业来说都是竞争的核心，不过我们也可以看到很多新型领域的出现，例如人工智能，AR|AR,数据服务等，伴随着人工智能时代，大数据时代的到来，人工智能以及大数据将会成为企业竞争的又一大核心优势。','.lagou_analysis_domain',{tips:[2,'#000000'],time:10000});
+          });
+            $(".lagou_analysis_financing").mouseenter(function(){
+              layer.tips('在2020年一月份的30000+数据中，大多数工资都是不需要融资的,因为对融资不太理解，再次也不做太多的说明','.lagou_analysis_financing',{tips:[2,'#000000'],time:10000});
+            });
+
+            $(".lagou_analysis_treatment").mouseenter(function(){
+           layer.tips('在2020年一月份的30000+数据中，五险一金几乎成为大部分企业的标配，不过整体的待遇还是不错的呢。','.lagou_analysis_treatment',{tips:[2,'#000000'],time:10000});
+          });
+            $(".lagou_analysis_education").mouseenter(function(){
+           layer.tips('在2020年一月份的30000+数据中，本科生+1-3年工作经验对绝大多数企业而言是硬性要求，可以从图中看到，绝大多数公司对工作经验都有很大的要求，因此增加项目经验和实习经验是必须和重中之重的！！！当然对于阅历更高一些的人还是更有优势的，毕竟高素质人才正在日益成为企业培养和发展的对象！','.lagou_analysis_education',{tips:[2,'#000000'],time:10000});
+          });
+        $("#city_").mouseenter(function(){
+           layer.tips('选取了计算机就业较好的13个地方😁','#city_',{tips:[1,'#000000'],time:2000});
+           });
+        $("#salary_").mouseenter(function(){
+           layer.tips('这也许是你们比较关心的问题了~🤭','#salary_',{tips:[1,'#000000'],time:2000});
+           });
+        $("#education_").mouseenter(function(){
+           layer.tips('学历还是很重要的！！！💪','#education_',{tips:[1,'#000000'],time:2000});
+           });
+        $("#experience_").mouseenter(function(){
+           layer.tips('很多企业都需要有经验的老司机呢🙆','#experience_',{tips:[1,'#000000'],time:2000});
+           });
+        var active ={
+           search_job:function(){
+              var city = $("#city").val();
+              var salary = $("#salary").val();
+              var education = $("#education").val();
+              var experience = $("#experience").val();
+              var keyword = '';
+              $.each($("input[type=checkbox]:checked"),function(){   // :可以表示type和类型
+                    keyword+=$(this).val()+',';
+                 });
+             //数据重载
+           tableObj.reload({
+               url:'/user_api/visualize_lagou_api/',
+               //额外参数
+               where:{
+                   'city':city,
+                   'salary':salary,
+                   'education':education,
+                   'experience':experience,
+                   'keyword':keyword,
+                  },
+               page:{
+                  'curr':1, //page从第一页开始
+                }
+              });
+              }
+            };
+
+         $("#search_job_").on('click',function(){
+            var othis = $(this);    // 带var和不带var的区别:前者是变量声明，带不可删除属性；后者为全局变量的一个属性，可以删除.
+            method = othis.data('method'); //method会在全局window下生成一个属性
+            active[method]? active[method].call(this,othis):'';
+            });
+
+
+        tableObj = table.render({
+          elem:'#lagou_table',
+          url:'/user_api/visualize_lagou_api/',
+          title:'拉勾网数据展示(仅用于学习)',
+          height:500,  //高度
+          width:'100%',
+          toolbar:'<p> 本数据仅用于学习分析使用，特此声明</p>', //开启工具栏,适用于左侧图标
+          page:true, //分页
+          cols:[[   //表头
+            {field:'index',title:'ID',fixed:'left',width:'200px'},
+            {field:'city',title:'城市',width:'200px'},
+            {field:'education',title:'学历',width:'200px'},
+            {field:'industry',title:'企业',width:'200px'},
+            {field:'job_keyword',title:'职位关键字',width:'200px'},
+            {field:'publish_time',title:'发布招聘时间',width:'200px'},
+            {field:'salary',title:'月薪',sort:true,width:'200px'},
+            {field:'scale',title:'企业规模',width:'200px'},
+            {field:'technology_keyword',title:'技术关键词',width:'200px'},
+            {field:'treatment',title:'待遇',width:'200px'},
+            {fixed:'right',width:180,align:'center',toolbar:'#tools',width:'200px'}  // 工具条面板
+            ]],
+          text:{
+             none:'抱歉，亲😙暂无相关数据' //当没有数据时显示文本
+             },
+          defaultToolbar:['filter',{   //适用于右侧图标
+             title:'帮助',
+             layEvent:'inform_tips',  //事件名
+             icon:'layui-icon-help',
+             }],
+          even:'true',  //开启隔行背景
+          });
+
+         //监听工具条
+         var table_tool = table.on('tool(lagou_tables)',function(obj){   //tool为列中工具条事件名，里面是lay-filter属性值,obj为table对象
+            var data = obj.data;
+            var layEvent = obj.event;  // 获取lay-event对应的值
+            var tr = obj.tr;   //获取当前行tr的dom对象（如果有的话）
+            if (layEvent === 'detail'){  //3个等于号先判断类型（恒等），2个等于号先转换类型再判断
+                layer.msg('目前暂时不提供具体信息');
+            }
+            else if(layEvent === 'edit'){
+                layer.msg('禁止修改',{icon:4});
+            }
+            else if(layEvent === 'del'){
+                layer.msg('禁止删除',{icon:0});
+            }
+            });   //table的render结束
+
+         var tabel_toolbar = table.on('toolbar(lagou_tables)',function(obj){
+             var checkStatus = table.checkStatus(obj.config.id);   //获取已选中的checkbox的对象
+             switch(obj.event){
+                case 'inform_tips':
+                   layer.msg('这些爬出的数据仅用于学习，不用于商业用途！每个月会更新一次~');
+                }
+         });
+
+
+
+
+
+
+
+
+
+    });
+
+</script>
+{% endblock %}

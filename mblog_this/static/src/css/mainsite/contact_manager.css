@@ -1,0 +1,20 @@
+.contact{
+width:360px;
+text-align:center;
+margin:0 auto;
+top:10px;
+left:0;
+right:0;
+bottom:0;
+}
+
+.contact header{
+    margin-top: 10px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 30px;
+    font-weight: 100;
+    text-align: center;
+    margin-bottom:15px;
+    color:#5FB878;
+}

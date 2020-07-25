@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>兼容PC端和移动端的jQuery拖动滑块验证</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE-edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link type="text/css" rel="stylesheet" href="css/slide-unlock.css">
+<style>
+html, body, h1 {
+    margin: 0;
+    padding: 0;
+}
+body { 
+    background-color: #151515;
+    color: #d5d4ff;
+    overflow: hidden;
+}
+#demo {
+    width: 600px;
+    margin: 150px auto;
+    padding: 10px;
+    border: 0px dashed #d5d4ff;
+    border-radius: 10px;
+    text-align: left;
+}
+</style>
+</head>
+<body>
+<div id="demo">
+    <div id="slider">
+        <div id="slider_bg"></div>
+        <span id="label">>></span> <span id="labelTip">拖动滑块验证</span>
+    </div>
+<script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="js/jquery.slideunlock.js"></script> 
+<script>
+$(function () {
+    var slider = new SliderUnlock("#slider",{
+			successLabelTip : "验证成功"	
+		},function(){
+			alert("验证成功,即将跳转至#");
+        	window.location.href="#";
+			//以下四行设置恢复初始，不需要可以删除
+			setTimeout(function(){
+		        $("#labelTip").html("拖动滑块验证");
+				$("#labelTip").css("color","#787878");
+				},2000);
+			slider.init();
+		});
+    slider.init();
+})
+</script> 
+</div>
+</body>
+</html>

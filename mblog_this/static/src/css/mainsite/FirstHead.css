@@ -1,0 +1,8 @@
+/*ÐÞ¸Ä×ÖÌå*/
+@font-face{
+font-family:ibmplexmono;
+src:url('/static/font/ibmplexmono-bolditalic.woff2.ttf');
+}
+
+
+body,h1,h2,h3,h4,h5,input,p,a,div,button,ul,li{font-family:ibmplexmono !important;font-weight:normal !important;}

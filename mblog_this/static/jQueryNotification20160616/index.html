@@ -1,0 +1,185 @@
+﻿<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>基于Animate.css的炫酷jQuery消息通知框插件</title>
+	<link href='http://www.jq22.com/jquery/bootstrap-3.3.4.css' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="css/default.css">
+    <link rel='stylesheet' href='css/animate.min.css'>
+    <link rel="stylesheet" href="css/notification.css">
+    <link rel="stylesheet" href="css/index.css">
+	<!--[if IE]>
+		<script src="http://libs.baidu.com/html5shiv/3.7/html5shiv.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<article class="jq22-container">
+		<header class="jq22-header">
+			<h1>基于Animate.css的炫酷jQuery消息通知框插件 <span>A Nice Corner Notification System with JavaScript and Animate.css</span></h1>
+		</header>
+		<div class="container">
+	        <nav class="navbar">
+	            <h1 class="text-center">Notification</h1>
+	        </nav>
+	        <div class="settings row">
+	            <div class="col-md-12">
+	                <h2 class="panel-title text-center">Position</h2>
+	                <div class="positions">
+	                    <div class="position top left selected" data-position="1"></div>
+	                    <div class="position top right" data-position="2"></div>
+	                    <div class="position bottom right" data-position="3"></div>
+	                    <div class="position bottom left" data-position="4"></div>
+	                </div>
+	            </div>
+	            <div class="col-md-12">
+	                <h2 class="panel-title text-center">Effect</h2>
+	                <div class="in col-md-4">
+	                    <h3>In</h3>
+	                    <!-- Bounce -->
+	                    <fieldset>
+	                        <legend>Bounce</legend>
+	                        <div class="notify btn" value="bounceIn">bounceIn</div>
+	                        <div class="notify btn" value="bounceInDown">bounceInDown</div>
+	                        <div class="notify btn" value="bounceInLeft">bounceInLeft</div>
+	                        <div class="notify btn" value="bounceInRight">bounceInRight</div>
+	                        <div class="notify btn" value="bounceInUp">bounceInUp</div>
+	                    </fieldset>
+	                    <!-- Fade -->
+	                    <fieldset>
+	                        <legend>Fade</legend>
+	                        <div class="notify btn" value="fadeIn">fadeIn</div>
+	                        <div class="notify btn" value="fadeInDown">fadeInDown</div>
+	                        <div class="notify btn" value="fadeInDownBig">fadeInDownBig</div>
+	                        <div class="notify btn" value="fadeInLeft">fadeInLeft</div>
+	                        <div class="notify btn" value="fadeInLeftBig">fadeInLeftBig</div>
+	                        <div class="notify btn" value="fadeInRight">fadeInRight</div>
+	                        <div class="notify btn" value="fadeInRightBig">fadeInRightBig</div>
+	                        <div class="notify btn" value="fadeInUp">fadeInUp</div>
+	                        <div class="notify btn" value="fadeInUpBig">fadeInUpBig</div>
+	                    </fieldset>
+	                    <!-- Zoom -->
+	                    <fieldset>
+	                        <legend>Zoom</legend>
+	                        <div class="notify btn" value="zoomIn">zoomIn</div>
+	                        <div class="notify btn" value="zoomInDown">zoomInDown</div>
+	                        <div class="notify btn" value="zoomInLeft">zoomInLeft</div>
+	                        <div class="notify btn" value="zoomInRight">zoomInRight</div>
+	                        <div class="notify btn" value="zoomInUp">zoomInUp</div>
+	                    </fieldset>
+	                    <!-- Rotate -->
+	                    <fieldset>
+	                        <legend>Rotate</legend>
+	                        <div class="notify btn" value="rotateIn">rotateIn</div>
+	                        <div class="notify btn" value="rotateInDownLeft">rotateInDownLeft</div>
+	                        <div class="notify btn" value="rotateInDownRight">rotateInDownRight</div>
+	                        <div class="notify btn" value="rotateInUpLeft">rotateInUpLeft</div>
+	                        <div class="notify btn" value="rotateInUpRight">rotateInUpRight</div>
+	                    </fieldset>
+	                    <!-- Flip -->
+	                    <fieldset>
+	                        <legend>Flip</legend>
+	                        <div class="notify btn" value="flipInX">flipInX</div>
+	                        <div class="notify btn" value="flipInY">flipInY</div>
+	                    </fieldset>
+	                    <!-- Light -->
+	                    <fieldset>
+	                        <legend>Light</legend>
+	                        <div class="notify btn" value="lightSpeedIn">lightSpeedIn</div>
+	                    </fieldset>
+	                    <!-- Roll -->
+	                    <fieldset>
+	                        <legend>Roll</legend>
+	                        <div class="notify btn" value="rollIn">rollIn</div>
+	                    </fieldset>
+	                </div>
+	                <div class="alert col-md-4">
+	                    <h3>Alert</h3>
+	                    <fieldset>
+	                        <legend></legend>
+	                        <div class="notify btn" value="bounce">bounce</div>
+	                        <div class="notify btn" value="flash">flash</div>
+	                        <div class="notify btn" value="pulse">pulse</div>
+	                        <div class="notify btn" value="rubberBand">rubberBand</div>
+	                        <div class="notify btn" value="shake">shake</div>
+	                        <div class="notify btn" value="swing">swing</div>
+	                        <div class="notify btn" value="tada">tada</div>
+	                        <div class="notify btn" value="wobble">wobble</div>
+	                    </fieldset>
+	                </div>
+	                <div class="col-md-4">
+	                    <h3>Out</h3>
+	                    <!-- Bounce -->
+	                    <fieldset>
+	                        <legend>Bounce</legend>
+	                        <div class="notify btn" value="bounceOut">bounceOut</div>
+	                        <div class="notify btn" value="bounceOutDown">bounceOutDown</div>
+	                        <div class="notify btn" value="bounceOutLeft">bounceOutLeft</div>
+	                        <div class="notify btn" value="bounceOutRight">bounceOutRight</div>
+	                        <div class="notify btn" value="bounceOutUp">bounceOutUp</div>
+	                    </fieldset>
+	                    <!-- Fade -->
+	                    <fieldset>
+	                        <legend>Fade</legend>
+	                        <div class="notify btn" value="fadeOut">fadeOut</div>
+	                        <div class="notify btn" value="fadeOutDown">fadeOutDown</div>
+	                        <div class="notify btn" value="fadeOutDownBig">fadeOutDownBig</div>
+	                        <div class="notify btn" value="fadeOutLeft">fadeOutLeft</div>
+	                        <div class="notify btn" value="fadeOutLeftBig">fadeOutLeftBig</div>
+	                        <div class="notify btn" value="fadeOutRight">fadeOutRight</div>
+	                        <div class="notify btn" value="fadeOutRightBig">fadeOutRightBig</div>
+	                        <div class="notify btn" value="fadeOutUp">fadeOutUp</div>
+	                        <div class="notify btn" value="fadeOutUpBig">fadeOutUpBig</div>
+	                    </fieldset>
+	                    <!-- Zoom -->
+	                    <fieldset>
+	                        <legend>Zoom</legend>
+	                        <div class="notify btn" value="zoomOut">zoomOut</div>
+	                        <div class="notify btn" value="zoomOutDown">zoomOutDown</div>
+	                        <div class="notify btn" value="zoomOutLeft">zoomOutLeft</div>
+	                        <div class="notify btn" value="zoomOutRight">zoomOutRight</div>
+	                        <div class="notify btn" value="zoomOutUp">zoomOutUp</div>
+	                    </fieldset>
+	                    <!-- Rotate -->
+	                    <fieldset>
+	                        <legend>Rotate</legend>
+	                        <div class="notify btn" value="rotateOut">rotateOut</div>
+	                        <div class="notify btn" value="rotateOutDownLeft">rotateOutDownLeft</div>
+	                        <div class="notify btn" value="rotateOutDownRight">rotateOutDownRight</div>
+	                        <div class="notify btn" value="rotateOutUpLeft">rotateOutUpLeft</div>
+	                        <div class="notify btn" value="rotateOutUpRight">rotateOutUpRight</div>
+	                    </fieldset>
+	                    <!-- Flip -->
+	                    <fieldset>
+	                        <legend>Flip</legend>
+	                        <div class="notify btn" value="flipInX">flipInX</div>
+	                        <div class="notify btn" value="flipInY">flipInY</div>
+	                    </fieldset>
+	                    <!-- Light -->
+	                    <fieldset>
+	                        <legend>Light</legend>
+	                        <div class="notify btn" value="lightSpeedOut">lightSpeedOut</div>
+	                    </fieldset>
+	                    <!-- Hinge -->
+	                    <fieldset>
+	                        <legend>Hinge</legend>
+	                        <div class="notify btn" value="hinge">hinge</div>
+	                    </fieldset>
+	                    <!-- Roll -->
+	                    <fieldset>
+	                        <legend>Roll</legend>
+	                        <div class="notify btn" value="rollOut">rollOut</div>
+	                    </fieldset>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</article>
+	
+	<script src="http://www.jq22.com/jquery/2.1.1/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/jquery-2.1.1.min.js"><\/script>')</script>
+	<script src="js/notification.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>

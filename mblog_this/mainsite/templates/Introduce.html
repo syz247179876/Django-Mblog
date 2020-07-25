@@ -1,0 +1,83 @@
+{% extends 'FirstHead.html' %}
+{% block contents %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'src/css/mainsite/introduce.css' %}">
+<div class="person_introduce">
+  <div class ='text_body'>
+      <!-- 文章标题-->
+    <span id ="title">{{introduce.title}}</span>
+      <br>
+      <br>
+      <!-- <span id="read_quantity">阅读量：({{introduce.read_counts}})</span> -->
+	  <div class="celebrated" style="color: #b95216;font-size: 16px;"></div>
+      <div id="content">
+       {{introduce.note_contents|safe|escape}}
+          </div>
+    </div>
+</div>
+<script type="text/javascript">
+	var arr = [
+		'An ideal is a kind of motivation ---[法]罗曼·罗兰',
+		'A soul with imagination is like an observatory without a telescope ---[德]爱因斯坦',
+		'Remember that,without your permission, no one can make you feel inferior ---[美]罗斯福',
+		'The subject of life is makeing choices ---[法]萨特'
+	]
+	var index = 0
+	var i = 0
+	var str2 = ''
+	var time1, time2
+	var font = document.getElementsByClassName('celebrated')[0]
+	
+	function add(index) {
+		// 用于添加打印字符
+	    str2 = this.str.slice(0, index) //切片字符串
+		// 不断更新最新的字符子串
+	    font.innerHTML = str2
+	    if (index <= this.str.length) {
+	        setTime('add', 100)
+	    } else {
+	        clearTimeout(time1)  // 准备掉头
+	        setTime('reduce', 1000)  // 准备掉头前延迟1s
+	    }
+	}
+	
+	function reduce(index) {
+		// 用于回退字符
+	    str2 = this.str.slice(0, index)  //切片字符串
+	    font.innerHTML = str2
+	    if (index > 0) {
+	        setTime('reduce', 20)   // 每隔50ms删减字符
+	    } else {
+	        index = 0
+	        clearTimeout(time1)  // 准备掉头
+	        if (i < arr.length - 1) {   // 循环字符串数组
+	            i++
+	        } else i = 0
+			//从下一个字符串进行开始
+	        change(i)
+	    }
+	}
+	// 设置定时器，用于延迟调用
+	function setTime(type, time) {
+	    var that = this
+	    time1 = setTimeout(function() {
+	        if (type == 'add') {
+	            index++
+	            add(index)
+	        } else {
+	            index = index > 0 ? index - 1 : 0
+	            reduce(index)
+	        }
+	    }, time);
+	}
+	
+	// 改变，开始打印字符串时调用
+	function change(i) {
+	    if (i < arr.length) {
+	        this.str = arr[i]
+	        add(index)
+	    }
+	}
+	change(0)
+</script>
+{% endblock %}

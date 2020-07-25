@@ -1,0 +1,52 @@
+{% extends 'FirstHead.html' %}
+{% block contents %}
+{% load static %}
+{% load filters_ %}
+<link rel="stylesheet" type="text/css" href="{% static 'src/css/notes/notes.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'src/css/notes/paginator.css' %}">
+<ul class="layui-timeline notes_list ">
+  {% if error %}
+    {{error}}
+  {% endif %}
+  {% for note in notes.object_list %}
+  {% if forloop.first %}
+  <blockquote class="layui-elem-quote layui-quote-nm quote title">最近更新笔记--------文章简介</blockquote>
+  {% endif %}
+  <li class="layui-timeline-item">
+    <i class="layui-icon layui-timeline-axis icon layui-icon-note "></i>
+    <div class="note_style">
+    <div class="layui-timeline-content note-content-style">
+      <a href=" /notes/user_articles_list/{{note.slug}} " class="layui-timeline-title notes_title">笔记：{{note.title}}</a>
+      <div class="notes_content">
+        <!--escape进行html转义不过不大管用-->
+        <div class="shorthands">
+          <span style="font-weight:bolder">简介：</span>{{note.shorthand}}
+          <!--修改成关键字-->
+        </div>
+      </div>
+      <div class="note_detail_">
+
+      <span class="author layui-icon layui-icon-username"> : {{note.note_author.username}}</span>
+      <span class="read_counts layui-icon layui-icon-read"> : {{note.read_counts}}</span>
+      <span class="type layui-icon layui-icon-file-b"> : {{note.type}}</span>
+      <span class="date layui-icon layui-icon-time"> : {{note.publish_date}}</span>
+        <span class="key_word layui-icon layui-icon-note"> : {{note.key_word}}</span>
+      </div>
+    </div>
+    </div>
+  </li>
+  {% endfor %}
+  <ul id="menu">
+  {% if notes.has_previous %}
+     <li><a href="/notes/user_note/note/{{type}}/page_number={{ notes.previous_page_number }}">上一页</a></li>
+    {% endif %}
+  {% for note in notes.paginator.page_range %}
+     <li><a href="/notes/user_note/note/{{type}}/page_number={{ note }}">{{ note }}</a></li>
+  {% endfor %}
+  {% if notes.has_next %}
+     <li><a href="/notes/user_note/note/{{type}}/page_number={{ notes.next_page_number }}">下一页</a></li>
+  {% endif %}
+  </ul>
+</ul>
+
+{% endblock %}

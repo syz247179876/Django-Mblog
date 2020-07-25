@@ -1,0 +1,35 @@
+.search-list{
+width:35%;
+margin-left:10px;
+}
+
+.introduce{
+width:150px;
+margin-top:50px;
+margin-left:-70px;
+position:absolute;
+color:#ff8181;
+}
+
+.title{
+left:25%;
+position:relative;
+weight:bolder;
+font-size:21px;
+}
+.search-content{
+width:100%;
+}
+
+.search-list a{
+text-decoration:none;
+color:#f8f1f1;
+}
+
+.search-list p{
+color:#f8f1f1;
+}
+
+.search-list span{
+color:#f8f1f1;
+}

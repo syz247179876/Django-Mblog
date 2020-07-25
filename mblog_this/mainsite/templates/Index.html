@@ -1,0 +1,63 @@
+<!--时间线纲要-->
+{% extends 'FirstHead.html' %}
+{% block contents %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'src/css/notes/notes.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'src/css/notes/paginator.css' %}">
+<div class="layui-carousel " id="carousels" style="margin-top:5px;">
+  <div carousel-item>
+    <div style="margin:0 px;">
+   {% load cache %}
+    {% cache 3600 'wordcloud' %}
+       {{word_cloud|safe}}
+    {% endcache %}
+     </div>
+    <div style="margin:0 px;background-color:#ebfaf3;">
+      {% load cache %}
+    {% cache 43200 'dailynotes' %}
+      {{daily_notes|safe}}
+      {% endcache %}
+     </div>
+    {% load static %}
+  </div>
+</div>
+
+
+<ul class="layui-timeline recent_notes">
+  <blockquote class="layui-elem-quote layui-quote-nm">最近一周内发布的7篇文章</blockquote>
+  {% if not recent_notes %}
+     <p style="opacity:0.5">暂时还没更新</p>
+  {% else %}
+  {% for note in recent_notes %}
+  {% if forloop.first %}
+  <div class="InShadow">
+  {% endif %}
+  <li class="layui-timeline-item">
+    <i class="layui-icon layui-timeline-axis">&#xe735;</i>
+    <div class="layui-timeline-content">
+      <a href="/notes/user_articles_list/{{note.slug}}" class="layui-timeline-title notes_title">💗{{note.title}}</a>
+      <span class="notes_date">{{note.publish_date}}</span>
+        <div class="shorthands">
+      <span style="font-weight:bolder">简介：</span>{{note.shorthand}}
+       </div>
+         <div class="note_detail_"><span class="author">作者：{{note.note_author.username}}</span></div>
+      <div class="note_detail_"><span class="key_word">关键词：{{note.key_word}}</span></div>
+      <div class="note_detail_"><span class="type">文章类型：{{note.type}}</span></div>
+      <div class="note_detail_"><span class="read_counts">阅读量：{{note.read_counts}}</span></div>
+      <div class="note_detail_"><span class="date">发布日期：{{note.publish_date}}</span></div>
+    </div>
+  </li>
+  {% if forloop.last %}
+
+    </div>
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+
+</ul>
+
+{% endblock %}
+
+<script>
+
+</script>

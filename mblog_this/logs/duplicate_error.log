@@ -1,0 +1,8 @@
+ERROR - 2020-04-27 16:30:12,062 - upload_homework - post - 2551 - 140506242897664 - [Errno 2] No such file or directory: 'D:\\\\syz\\\\virtualenvs\\\\MyDjango\\\\svn_mblog/软件工程1705移动互联网'
+ERROR - 2020-04-27 16:33:11,527 - upload_homework - post - 2605 - 140347625400064 - Object of type TemporaryUploadedFile is not JSON serializable
+ERROR - 2020-04-27 18:05:17,585 - upload_homework - post - 2828 - 139781558073088 - name 'inform_handleHomework' is not defined
+ERROR - 2020-04-27 18:05:17,703 - upload_homework - post - 2826 - 139781558073088 - name 'inform_handleHomework' is not defined
+ERROR - 2020-04-27 18:05:18,100 - upload_homework - post - 2829 - 139781711320832 - name 'inform_handleHomework' is not defined
+ERROR - 2020-04-27 18:05:18,286 - upload_homework - post - 2829 - 139781558073088 - name 'inform_handleHomework' is not defined
+ERROR - 2020-04-27 19:10:46,225 - upload_homework - post - 4116 - 140326248097536 - name 'inform_handleHomework' is not defined
+ERROR - 2020-05-03 12:41:21,775 - upload_homework - post - 1228 - 140520542680832 - MISCONF Redis is configured to save RDB snapshots, but it is currently not able to persist on disk. Commands that may modify the data set are disabled, because this instance is configured to report errors during writes if RDB snapshotting fails (stop-writes-on-bgsave-error option). Please check the Redis logs for details about the RDB error.

@@ -1,0 +1,68 @@
+{% extends 'FirstHead.html' %}
+{% block visual_contents %}
+<fieldset class="layui-elem-field layui-field-title site-demo-button" style="margin-top: 30px;">
+  <legend>绘制自定义图表</legend>
+</fieldset>
+<div class="layui-tab">
+    <ul class="layui-tab-title">
+        <li class="layui-this">树状图</li>
+        <li>旭日图</li>
+        <li>词云图</li>
+        <li>饼状图</li>
+        <li>漏斗图</li>
+        <li>水球图</li>
+        <li>仪表盘</li>
+        <li>涟漪特效散点图</li>
+        <li>折线图</li>
+        <li>象形图</li>
+        <li>散点图</li>
+        <li>中国地图</li>
+    </ul>
+
+    <div class="layui-tab-content" style="width:70%">
+        <div class="layui-tab-item layui-show">{{bar|safe}}</div>
+        <div class="layui-tab-item" >{{sunburst|safe}}</div>
+        <div class="layui-tab-item" >{{wordcloud|safe}}</div>
+        <div class="layui-tab-item" >{{pie|safe}}</div>
+        <div class="layui-tab-item" >{{funnel|safe}}</div>
+        <div class="layui-tab-item" >{{liquid|safe}}</div>
+        <div class="layui-tab-item" >{{sunburst|safe}}</div>
+        <div class="layui-tab-item" >{{effect_scatter|safe}}</div>
+        <div class="layui-tab-item" ></div>
+        <div class="layui-tab-item" ></div>
+        <div class="layui-tab-item" ></div>
+        <div class="layui-tab-item" >{{china_map|safe}}</div>
+
+    </div>
+</div>
+
+<div id="layer_notice"><button class="layui-btn" id="chuowo" data-method="notice">戳我戳我戳我~</button> </div>
+
+<!--子页面的所有部分均放置在block容器中,scripts也不例外-->
+<script>
+layui.use(['layer','element'],function(){
+var $ = layui.jquery;
+var element = layui.element;
+var layer = layui.layer;
+  var notices='<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">此功能为自定义绘制图表，通过tab选项卡选择自己想要使用的图表，点击图表右上角第3个图标data view数据视图，添加自己需要可视化分析的数据（要注意格式哦~），然后点击刷新，生成新的图表，最后点击右上角第一个图标，将图表下载下来就可以咯~~~嘿嘿嘿 不懂得点击下方的戳我戳我戳我哦~</div>'
+layer.ready(function(){   //页面一打开就按照顺序调用温馨提示
+layer.open({
+    type:1,
+    title:'温馨提示',
+    content:notices,
+    closeBtn:0,
+    shade:0.3,
+    shadeClose:true,
+    anim:1,
+    id:'echarts_notice',
+    btn:['了解','欧力给'],
+    btnAlign:'c',
+    });
+});
+
+
+ });
+</script>
+
+
+{% endblock %}

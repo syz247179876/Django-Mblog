@@ -1,0 +1,621 @@
+﻿{% extends 'FirstHead.html' %}
+
+{% block contents %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'src/css/notes/code.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'src/css/comment/msg.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'src/css/notes/article.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'praise-heart/css/style.css' %}"/>
+
+<style type="text/css">
+code, kbd, pre, samp {
+font-family: ibmplexmono !important;
+font-weight: normal;
+}
+
+pre {
+font-family: ibmplexmono !important;
+}
+
+code {
+    padding: 2px 8px !important;
+    font-size: 94% !important;
+    color: #c43257 !important;
+    border-radius: 4px !important;
+    background: transparent;
+}
+
+hr {
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+    border: 0 !important;
+}
+
+</style>
+
+<div id = 'article_body'>
+  <div style="padding:30px;">
+      <!-- 文章标题-->
+    <span id ="title">{{note.title}}</span>
+      <br>
+      <br>
+      <span id="read_quantity">阅读量：({{note.read_counts}})</span>
+      <span id="place">您现在所在的位置：</span>
+      <span class="layui-breadcrumb" lay-separator=">">
+         <a href="{% url 'home_page' %}">首页</a>
+         <a href="javascript:;" id="rich_box">百宝箱</a>
+         <a href="/user_note/notes/{{note.type}}">{{note.type}}</a>
+         <a><cite>{{note.title}}</cite></a>
+      </span>
+      <span style="float:right;font-size:20px;"><span>作者：</span><i id="note-author">{{note.note_author.username}}</i></span>
+      <div style=" width:100%;margin-top:25px;">
+              <div style="background-color:#adfdee;border-radius:15px;padding:5px">
+          <span style="font-weight:bold">简介:</span>{{note.shorthand}}
+              </div>
+      </div>
+      <div id="content" style="font-family: ibmplexmono !important;font-weight: normal;font-size: 16px;line-height: 2.0;color: #333;">
+       {{note.note_contents|safe}}
+          </div>
+
+    </div>
+</div>
+
+<div class="feed" id="feed2">
+			<p>点赞一波</p>
+			<div class="heart" id="red_star" rel="like"></div> <div class="likeCount" id="likeCount">{{note.praise}}</div>
+</div>
+
+
+<div style="width:95%">
+    <ul class="layui-timeline" style="margin-top:30px">
+        {% for criticism_msg_id,criticism_msg in criticism_msgs.items %}
+        {% if forloop.first %}
+     <blockquote class="layui-elem-quote">评论集</blockquote>
+          <div class="OutShadow">
+      {% endif %}
+  <li class="layui-timeline-item">
+    <i class="layui-icon layui-timeline-axis">&#xe735;</i>
+    <div class="layui-timeline-content">
+<!--{% cycle 'color:#FF5722;font-size:16px;font-family:楷体;' 'color:#009688;font-size:16px;font-family:宋体;' 'color:#1E9FFF;font-size:16px;font-weight: bold;' %}-->
+    <div class="layui-row">
+     <div class="layui-col-md5">
+        <div style="float:left;">
+                 <span><img src="{{criticism_msg.criticism_author_head_image}}" class="head_image"></span>
+                 <span class="msg_author">{{criticism_msg.criticism_author_name}}</span>&nbsp;&nbsp;&nbsp;
+                 <span class="msg_date">{{criticism_msg.criticism_dates|date:"Y-m-d H:i"}}</span>
+          </div>
+     </div>
+    </div>
+        <div class="layui-row">
+            <div class="layui-col-md9 msg_content">
+                {{criticism_msg.criticism_content}}
+            </div>
+            <div class="layui-col-md3" style="float:right">
+          <!--这里要美化button,下面是点赞不用改-->
+             <button type="button" class="layui-btn layui-icon layui-btn-primary praise layui-icon-praise"><img  class='img_new'></button>
+              <span class="praises">{{criticism_msg.criticism_praise_counts}}</span>
+              <button type="button" class="layui-btn layui-icon layui-btn-primary npraise layui-icon-tread"><img  class='img_new'></button>
+              <span class="npraises">{{criticism_msg.criticism_tread_counts}}</span>
+                  <span class="msg_id" style="font-size:1px;display:none;">{{criticism_msg_id}}</span>
+          </div>
+        </div>
+        {% for reply in criticism_msg.note_reply %}
+           <div class = replay_container>
+               <div class="layui-row">
+                   <div class="layui-col-md7 ">
+                       <div class="reply_body">
+                              <span><img src="{{reply.reply_author_head_name}}" class="head_image"></span>
+                              <span class="msg_author">{{reply.reply_author_name}}</span>&nbsp;&nbsp;&nbsp;
+                              <span class="msg_date">{{reply.reply_dates|date:"Y-m-d H:i"}}</span>
+                              <p class="reply_content">{{reply.reply_content}}</p>
+                            <hr class="hr_style">
+                       </div>
+                   </div>
+                   <div class="layui-col-md3 thread_and_praise">
+                     <button type="button" class="layui-btn layui-icon layui-btn-primary reply_praise layui-icon-praise"><img style="position:absolute;width:20px;height:auto;"></button>
+                     <span class="praises">{{reply.reply_praise_counts}}</span>
+                     <button type="button" class="layui-btn layui-icon layui-btn-primary reply_npraise layui-icon-tread"><img style="position:absolute;width:20px;height:auto;"></button>
+                     <span class="npraises">{{reply.reply_tread_counts}}</span>
+                     <span class="msg_id" style="font-size:1px;display:none;">{{reply.reply_id}}</span>
+                   </div>
+               </div>
+           </div>
+        {% endfor %}
+        <div class="layui-row" id="reply_circle">
+            <span class="msg_id" style="font-size:1px;display: none">{{criticism_msg_id}}</span>
+          <span class="msg_reply layui-icon layui-icon-add-circle-fine" data-method="msg_reply_">回复</span>
+          <form class="layui-form layui-row msg_reply_content" style="display:none">
+              {% csrf_token %}
+               <textarea class="layui-textarea" autocomplete="false" placeholder="亲，请在此回复!" lay-verify="required" id="reply_content"></textarea>
+              <!-- 替换type='submit'为lay-submit,是的form监听submit有效-->
+               <button class="layui-btn layui-btn-xs" style="background-color:#F4A460;" lay-filter="reply_submit" lay-submit>提交</button>
+               <button type="reset" class="layui-btn layui-btn-primary layui-btn-xs">重置</button>
+          </form>
+        </div>
+         <hr class="hr_style">
+
+  </div>
+  </li>
+    {% if forloop.last %}
+              </div>
+          <blockquote class="layui-elem-quote" id="last_msg">下方评论哦~</blockquote>
+     {% endif %}
+        {% endfor %}
+        <!-- 留言 -->
+            <hr class="layui-bg-blue" style="height:1px">
+            <fieldset class="layui-elem-field " id="welcome" style="margin-top: 5px;">
+              <legend >欢迎您{{user}}</legend>
+             </fieldset>
+            <form class="layui-form" style="text-align:center;width:100%; ! important">
+                <div class="layui-form-item">
+                    <label class="layui-form-label" style="font-size:18px">评论框：</label>
+                    <div class="layui-input-block">
+                <textarea  class="layui-textarea" autocomplete="false" placeholder="亲，请输入对博主的留言~请输入内容不超过50个字" name="write_criticism" id="write_criticism" lay-verify="required" ></textarea>
+                    </div>
+                </div>
+                  <div class="layui-form-item">
+                    <div class="layui-input-block">
+                       <button class="layui-btn" lay-submit lay-filter="leave_msg" id="leave_msg_">立即评论</button>
+                       <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+         </div>
+            </form>
+
+
+
+</ul>
+</div>
+
+<script>
+        //复制文章
+        document.body.oncopy = function () {
+            //复制到剪切板
+                let oInput = document.createElement('textarea');
+                let text_copy = window.getSelection().toString();  // 获取选中的文本数据
+                if (text_copy.length>0) {
+                    let url = window.location.href;
+                    text_copy += '\n\n\n';
+                    text_copy += '作者：' + $("#note-author").text() + '\n' +
+                        '链接：' + url + '\n' +
+                        '来源：云博博客\n' +
+                        '著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。\n';
+                    oInput.value = text_copy;
+                    document.body.appendChild(oInput);
+                    oInput.select(); // 选择对象
+                    document.execCommand("Copy"); // 执行浏览器复制命令,关键
+                    oInput.style.display = 'none';
+                }
+        };
+</script>
+
+<script>
+//Layui代码
+layui.use(['jquery', 'rate', 'layer','form'],
+function() {  //有了use，就不需要$(function(){})了，理论上只需要一个
+    let $ = layui.jquery;
+    let rate = layui.rate;
+    let layer = layui.layer;
+    let form = layui.form;
+
+    let next_url = window.location.pathname;  //用于回调跳转
+    let csrftoken = $.cookie("csrftoken");
+
+    praise_article();  //文章点赞
+
+    //文章点赞
+    function praise_article() {
+        $("#red_star").one('click', function () {
+            let this_ = $(this);
+            let sign=this_.attr("rel");
+            let counts = parseInt($("#likeCount").html());
+            if (sign === 'like') {
+                $(this).removeClass('layui-icon-star');
+                $(this).addClass('layui-icon-star-fill');
+                $(this).css({
+                    'color': 'red'
+                });
+                let data = {
+                    'title': $("#title").text(),
+                    'praise_status': 'Yes',
+                    'author': $("#note-author").text()
+                };
+                $.ajax({
+                    url: "/user_api/add_grade/",
+                    headers: {
+                        "X-CSRFToken": csrftoken,
+                    },
+                    data: data,
+                    type: 'POST',
+                    success: function (result) {
+                        if (result.status === 'success') {
+                            $("#likeCount").html(counts + 1);
+                            this_.addClass("heartAnimation").attr("rel", "unlike");
+                        }
+                    }
+                });
+            }else {
+                $(this).removeClass('layui-icon-star-fill');
+                $(this).addClass('layui-icon-star');
+                $(this).css({
+                    'color': 'black'
+                });
+                let data = {'praise_status': 'No', 'title': $("#title").text()};
+                $.ajax({
+                    url: "/user_api/add_grade/",
+                    headers: {
+                        "X-CSRFToken": csrftoken,
+                    },
+                    data: data,
+                    type: 'POST',
+                    success: function (result) {
+                        if (result.status === 'success') {
+                            layer.msg('您又取消了呢~', {icon: 5, time: 2000});
+                            $("#likeCount").html(counts - 1);
+                            this_.addClass("heartAnimation").attr("rel", "unlike");
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+
+
+    $(".msg_id").hide();
+    let post_url = "/user_api/modify_Note_criticism_times/";
+    //评论点赞
+    $(".praise").one('click',
+    function() {
+        let num = Math.floor(Math.random() * 3 + 1);
+        let this_ = $(this);
+        let praise_counts = parseInt(this_.siblings(".praises").text()) + 1; //获取指定同胞的text文本值
+        let datas = {
+            'praise_counts': praise_counts,
+            'msg_id': this_.siblings(".msg_id").text(),
+            'function':'criticism'
+        };
+        let this_img = $(this).children("img");
+        let init_top = this_img.css("top"); //获取img初始位置图片
+        this_img.attr("src", '/static/image/' + num + '.png');
+        this_img.animate({
+            top: '-50px',
+            opacity: '0',
+            height: '20px',
+            width: 'auto',
+        },
+        666,
+        function() {
+            this_.removeClass('layui-icon-praise', ''); //删除button之前的文本
+            this_img.animate({ //回到原位
+                top: init_top,
+                opacity: '1',
+            },
+            1);
+            this_img.attr("src", '/static/image/yizan.png');
+        });
+        this_.siblings(".praises").text(praise_counts); //增加点赞数
+        $.ajax({
+            url: post_url,
+            data: datas,
+            type: 'POST',
+            error:function(){
+             window.location.href = '/error_404';
+            }
+        });
+
+    });
+
+    //评论差评
+    $(".npraise").one('click',
+    function() {
+        var this_ = $(this);
+        var num = Math.floor(Math.random() * 3 + 1);
+        var tread_counts = parseInt(this_.siblings(".npraises").text()) + 1;
+        var datas = {
+            'tread_counts': tread_counts,
+            'msg_id': this_.siblings(".msg_id").text(),
+            'function':'criticism'
+        };
+        var this_img = $(this).children("img");
+        var init_top = this_img.css("top"); //获取img初始位置图片
+        this_img.attr("src", '/static/image/' + num + '.png');
+        this_img.animate({
+            top: '-50px',
+            opacity: '0',
+            height: '20px',
+            width: 'auto',
+        },
+        666,
+        function() {
+            this_.removeClass('layui-icon-tread', ''); //删除button之前的文本
+            this_img.animate({ //回到原位
+                top: init_top,
+                opacity: '1',
+            },
+            1);
+            this_img.attr("src", '/static/image/zan.png');
+        });
+        this_.siblings(".npraises").text(tread_counts);
+        $.ajax({
+            url: post_url,
+            data: datas,
+            type: 'POST',
+            error:function(){
+               window.location.href = '/error_404';
+            }
+        });
+    });
+
+    //回复点赞
+    $(".reply_praise").one('click',
+    function() {
+        var num = Math.floor(Math.random() * 3 + 1);
+        var this_ = $(this);
+        var praise_counts = parseInt(this_.siblings(".praises").text()) + 1; //获取指定同胞的text文本值
+        var datas = {
+            'praise_counts': praise_counts,
+            'msg_id': this_.siblings(".msg_id").text(),
+            'function':'reply'
+        };
+        let this_img = $(this).children("img");
+        let init_top = this_img.css("top"); //获取img初始位置图片
+        this_img.attr("src", '/static/image/' + num + '.png');
+        this_img.animate({
+            top: '-50px',
+            opacity: '0',
+            height: '20px',
+            width: 'auto',
+        },
+        666,
+        function() {
+            this_.removeClass('layui-icon-praise', ''); //删除button之前的文本
+            this_img.animate({ //回到原位
+                top: init_top,
+                opacity: '1',
+            },
+            1);
+            this_img.attr("src", '/static/image/yizan.png');
+        });
+        this_.siblings(".praises").text(praise_counts); //增加点赞数
+        $.ajax({
+            url: post_url,
+            data: datas,
+            type: 'POST',
+            error:function(){
+             window.location.href = '/error_404';
+            }
+        });
+
+    });
+
+    //回复差评
+    $(".reply_npraise").one('click',
+    function() {
+        let this_ = $(this);
+        let num = Math.floor(Math.random() * 3 + 1);
+        let tread_counts = parseInt(this_.siblings(".npraises").text()) + 1;
+        let datas = {
+            'tread_counts': tread_counts,
+            'msg_id': this_.siblings(".msg_id").text(),
+            'function':'reply'
+        };
+        let this_img = $(this).children("img");
+        let init_top = this_img.css("top"); //获取img初始位置图片
+        this_img.attr("src", '/static/image/' + num + '.png');
+        this_img.animate({
+            top: '-50px',
+            opacity: '0',
+            height: '20px',
+            width: 'auto',
+        },
+        666,
+        function() {
+            this_.removeClass('layui-icon-tread', ''); //删除button之前的文本
+            this_img.animate({ //回到原位
+                top: init_top,
+                opacity: '1',
+            },
+            1);
+            this_img.attr("src", '/static/image/zan.png');
+        });
+        this_.siblings(".npraises").text(tread_counts);
+        $.ajax({
+            url: post_url,
+            data: datas,
+            type: 'POST',
+            error:function(){
+             window.location.href = '/error_404';
+             }
+        });
+    });
+
+
+    // 下拉回复框
+    $(".layui-timeline").on('click','.msg_reply', function(){
+       let this_ = $(this);
+       this_.siblings(".msg_reply_content").slideToggle(150);
+    });
+
+
+
+    //回复dom
+    function reply_new_user(head_image,reply_author,reply_date,reply_content,reply_id){
+      let reply = '<div class = replay_container>';
+      reply += '<div class="layui-row">';
+      reply += '<div class="layui-col-md7">';
+      reply += '<div class="reply_body">';
+      reply += '<span><img src="'+ head_image+'" class="head_image"></span>';
+      reply += '<span class="msg_author">'+reply_author+'</span>';
+      reply += '<span class="msg_date">'+reply_date+'</span>';
+      reply += '<p class="reply_content">'+reply_content+'</p>';
+      reply += '</div></div>';
+      reply += '<div class="layui-col-md3 thread_and_praise">';
+      reply += '<button type="button" class="layui-btn layui-icon layui-btn-primary reply_praise layui-icon-praise"><img src="" style="position:absolute;width:20px;height:auto;"></button>';
+      reply += '<span class="praises">0</span>';
+      reply += '<button type="button" class="layui-btn layui-icon layui-btn-primary reply_npraise layui-icon-tread"><img src="" style="position:absolute;width:20px;height:auto;"></button>';
+      reply += '<span class="npraises">0</span>';
+      reply += '<span class="msg_id" style="font-size:1px; display: none">'+ reply_id+'</span>';
+      reply += '</div></div></div> <hr class="hr_style">';
+      return reply;
+    }
+    //监听form回复表单
+    form.on('submit(reply_submit)',function(data){
+       let aim_button = $(data.elem);  // 获取点击的button对象
+       let reply_url = '/user_api/write_reply_note_api/';
+       let reply_data = {'reply_content':aim_button.siblings('#reply_content').val(),'msg_id':aim_button.parent().siblings('.msg_id').text(),'title':$("#title").text(),'author':$("#note-author").text(),'slug':'{{note.slug}}'};
+        {% if request.user.is_authenticated %}
+       $.ajax({
+         url:reply_url,
+         headers:{
+                "X-CSRFToken": csrftoken,
+                },
+         type:'POST',
+         data:reply_data,
+         success:function(data){
+         if(data.status === 'success'){
+            reply_content = reply_new_user(data.head_image,data.reply_author,data.date,data.reply_content,data.reply_id);
+            aim_button.parent().parent().before(reply_content);
+            }
+         else{
+           iziToast.error({
+               title: '错误',
+               message: '评论出错了',
+               position: 'topLeft',
+           });
+           }
+         },
+         error:function(){
+           iziToast.error({
+               title: '错误',
+               message: '评论出错了',
+               position: 'topLeft',
+           });
+       }
+       });
+        {% else %}
+       layer.open({
+         type:2,
+         title:'登录',
+         content:'/mainsite/login/?next='+next_url,
+         closeBtn:0,
+         shade:0.3,
+         area:['500px','70%'],
+         shadeClose:false,
+         anim:4,
+         offset:'t',
+         id:'login_s',
+         //btn:['登录','取消'],
+         btnAlign :'c',
+         resize:false,
+         });
+        $(".msg_reply_content").slideUp(1);
+         {% endif %}
+        return false;  //表示触发表单后是否刷新页面，false为不刷新
+    });
+
+
+    //评论dom
+    function msg_user(head_image,msg_date,msg_author,msg_content,msg_id){
+      var msg = '<div class="OutShadow">';
+      msg += '<li class="layui-timeline-item">';
+      msg += '<i class="layui-icon layui-timeline-axis">&#xe735;</i>';
+      msg += '<div class="layui-timeline-content">';
+      //评论基本信息
+      msg += '<div class="layui-row">';
+      msg += '<div class="layui-col-md5">';
+      msg += '<div style="float:left;">';
+      msg += '<span><img src="'+head_image+'" class="head_image"></span>';
+      msg += '<span class="msg_author">'+msg_author+'</span>&nbsp;&nbsp;&nbsp;';
+      msg += '<span class="msg_date">'+msg_content+'</span>';
+      msg += '</div></div></div>';
+      //评论内容
+      msg += '<div class="layui-row">';
+      msg += '<div class="layui-col-md9">'+msg_content+'</div>';
+      //评论点赞
+      msg += '<div class="layui-col-md3" style="float:right">';
+      msg += '<button type="button" class="layui-btn layui-icon layui-btn-primary praise layui-icon-praise"><img src="" style="position:absolute;width:20px;height:auto;"></button>';
+      msg += '<span class="praises">0</span>';
+      msg += '<button type="button" class="layui-btn layui-icon layui-btn-primary npraise layui-icon-tread" ><img src="" style="position:absolute;width:20px;height:auto;"></button>';
+      msg += '<span class="npraises">0</span>';
+      msg += '<span class="msg_id" style="font-size:1px;display:none">'+msg_id+'</span>';
+      msg += '</div><hr class="hr_style"></div>';
+      msg += '<div class="layui-row" id="reply_circle">';
+      msg += '<span class="msg_reply layui-icon layui-icon-add-circle-fine" data-method="msg_reply_">回复</span>';
+      msg += '<form class="layui-form layui-row msg_reply_content" style="display:none">'
+      msg += ' <textarea class="layui-textarea" autocomplete="false" placeholder="亲，请在此回复!" lay-verify="required"></textarea>';
+      msg += '<button class="layui-btn layui-btn-xs" style="background-color:#F4A460;" lay-filter="reply_submit" lay-submit>提交</button>';
+      msg += '<button type="reset" class="layui-btn layui-btn-primary layui-btn-xs">重置</button>';
+      msg += '</form></div></div></li></div>'
+      return msg;
+    }
+
+
+    //判断是否为游客登录
+    form.on('submit(leave_msg)',function(data){
+     var aim_button = $(data.elem);  // 获取点击的button对象
+    //typeof判断类型
+     var user_name = $("#user_logined_pc").text().trim();  // trim去掉空格
+      {% if not request.user.is_authenticated %}
+        layer.open({
+         type:2,
+         title:'登录',
+         content:'/mainsite/login/?next='+next_url,
+         closeBtn:0,
+         shade:0.3,
+         area:['500px','70%'],
+         shadeClose:false,
+         anim:4,
+         offset:'t',
+         id:'login_s',
+         //btn:['登录','取消'],
+         btnAlign :'c',
+         resize:false,
+         });
+        {% else %}
+     let msg_url = '/user_api/write_criticism_api/';
+     let message = $("#write_criticism").val();
+     let msg_data = {'write_criticism':message,'slug':'{{note.slug}}','title':$("#title").text(),'author':$("#note-author").text()};
+      $.ajax({
+       url:msg_url,
+       headers:{
+                "X-CSRFToken": csrftoken,
+                },
+       type:'POST',
+       data:msg_data,
+       success:function(data){
+          //添加评论
+         if(data.status === 'success'){
+           var msg_content = msg_user(data.head_image,data.date,data.criticism_author,data.criticism_content,data.criticism_id);
+           var insert = aim_button.parents().siblings('#last_msg');
+           // 判断是否是第一个写评论的人，设置其写评论的地方
+           if(insert.length<=0){
+               aim_button.parents().siblings('#welcome').before(msg_content);
+           }
+           else{
+           insert.before(msg_content);
+           }
+         }
+         else{
+             iziToast.error({
+                 title: '错误',
+                 message: '评论出错了',
+                 position: 'topLeft',
+             });
+           }
+       },
+       error:function() {
+           iziToast.error({
+               title: '错误',
+               message: '评论出错了',
+               position: 'topLeft',
+           });
+       }
+       });
+        {% endif %}
+      return false;
+    });
+
+});
+</script>
+
+{% endblock %}

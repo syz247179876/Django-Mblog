@@ -1,0 +1,243 @@
+
+html,body{
+outline:none ! important;
+
+}
+.BODY{
+background:url('https://django-blog-syz.oss-cn-shanghai.aliyuncs.com/134.jpg');
+background-attachment: fixed; /*固定图片*/
+outline:none;
+}
+.my-body{
+margin-left:180px;
+top: 51px;
+bottom: 0;
+position:absolute;
+}
+
+.two_rank{
+margin-left:20px;
+}
+
+/*左侧导航栏样式*/
+.left-side-position{
+margin-top:50px;
+}
+/*移动端头像*/
+.m_img{
+width: 100px;
+height: 100px;
+text-align:center;
+border-radius: 50%;
+}
+/*移动端用户名*/
+.m_users{
+text-align:center;
+font-size:25px;
+}
+.InShadow{
+box-shadow:0px 0px 60px 40px  #E0FFFF inset;
+}
+.OutShadow{
+box-shadow:0px 0px 60px 1px  #F8F8FF ;
+}
+.notes_title{
+color:#000000;
+opacity:0.7;
+font-size:20px;
+}
+
+
+
+.image_carousel{
+width:100%;
+height:400px;
+}
+
+
+.recent_notes{
+width:95%;
+margin-left:1px;
+margin-top:50px;
+}
+.layui-logo a{
+color:#67def2;
+}
+.layui-logo a:hover{
+color:#65e6b0;
+}
+
+.side_style{
+padding:10px 0 10px 30px;
+opacity:0.7;
+}
+
+
+.web_title{
+margin-top:30px;
+padding:10px 0 0 10px;
+font-size:20px;
+opacity:0.8;
+}
+
+.window{
+background-color:#ffffff;
+margin-top:20px;
+}
+
+
+.window_title{
+padding:10px 0 0 0px;
+font-size:20px;
+opacity:0.8;
+text-align:center;
+}
+
+.labels-icon{
+color:orange;
+font-size:20px;
+}
+
+.web-statistic-icon{
+color:blue;
+font-size:20px;
+}
+
+.popular-notes-icon{
+color:red;
+font-size:20px;
+}
+
+
+
+.dynamic-icon{
+color:red;
+font-size:20px;
+}
+
+.calender_c{
+margin-top:15px;
+}
+
+
+@media screen and (max-width: 750px)
+{
+.image_carousel{
+width:100%;
+height:100%;
+}
+
+.layui-carousel {
+width:100% ! important;
+height:210px ! important;
+}
+
+.layui-col-md3{
+padding-left:0px;
+}
+
+.window{
+background-color:#fff;
+margin-top:15px;
+}
+
+.window_title{
+padding:10px 0 0 0px;
+font-size:20px;
+opacity:0.8;
+text-align:center;
+}
+
+.calender_c{
+text-align: center;
+margin-top:15px;
+}
+.side_style{
+/*text-align:center;*/
+}
+
+.recent_notes{
+width:100%;
+margin-left:1px;
+margin-top:20px;
+}
+
+}
+
+
+.logos{
+font-size:25px;
+text-decoration:none;
+}
+
+.logos :hover{
+font-size:28px;
+text-decoration:none;
+}
+
+.carousel-img{
+width:100%;
+height:400px;
+}
+
+.shorthand_title{
+font-weight:bold;
+}
+.shorthand{
+width:60%;
+margin-left:20px;
+}
+
+.notes_list{
+padding-top:10px;
+font-size:16px;
+
+}
+
+.notes_list :hover{
+text-decoration:none;
+}
+
+.notes_list a{
+color:#0c2b46;
+}
+
+.notes_date{
+ float:right;
+}
+
+.note_detail{
+background:#5f86b0;
+width:90%;
+border-radius:25px;
+color:#fff;
+}
+.note_detail span{
+font-size:14px;
+font-weight:;
+padding-left:20px;
+}
+
+.inform-icon{
+font-size:20px;
+}
+
+.hr_{
+height:2px;
+width:42%;
+}
+
+
+.footer{
+padding: 30px 0;
+line-height: 30px;
+text-align: center;
+color: #666;
+font-weight: 300;
+background-color:#eadfbf5e;
+}
+
+
+.hand_homework{
+cursor: pointer;
+}

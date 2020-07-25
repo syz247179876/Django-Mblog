@@ -1,0 +1,93 @@
+﻿
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>云博文章搜索</title>
+    {% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'jquery-SearchBar20160307/css/search-form.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'src/css/notes/search.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'src/css/notes/paginator.css' %}">
+    <style>
+        span.highlighted {
+            color: red;
+        }
+        a.highlighted {
+            color: red;
+        }
+    </style>
+	<!--[if IE]>
+		<script src="https://libs.baidu.com/html5shiv/3.7/html5shiv.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<section class="container">
+		 <form role="search" method="get" id="" action="{% url 'search' %}">
+            <div class="search-wrapper">
+                <div class="input-holder">
+                     <input type="text" name="q" placeholder="云博文章搜索器" required class="search-input">
+                    <button class="search-icon" onclick="searchToggle(this, event);"><span></span></button>
+
+                </div>
+                <span class="close" onclick="searchToggle(this, event);"></span>
+            </div>
+              <div class="search-wrapper">
+              <div class="introduce">
+                    {{introduce}}
+                </div>
+              </div>
+        </form>
+	</section>
+{% load highlight %}
+{% if query %}
+
+    <h2>搜索结果如下：</h2>
+    {% for result in page.object_list %}
+    <div class="search-list">
+        <div class="title">
+            <span>文章：</span><a href="/notes/user_articles_list/{{result.object.slug}}">{{ result.object.title }}</a>
+        </div>
+        <p>作者：{{ result.object.note_author|safe }}</p>
+        <p>关键字：{% highlight result.object.key_word with query %}</p>
+        <p class="search-content">文章内容：{% highlight result.object.note_contents with query %}</p>
+        </div>
+    {% empty %}
+        <p>啥也没找到</p>
+    {% endfor %}
+  <ul id="menu">
+      {% if page.has_previous %}
+       <li><a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">上一页</a></li>
+      {% endif %}
+      {% for page in page.paginator.page_range %}
+        <li><a href="?q={{ query }}&amp;page={{ page }}">{{ page }}</a></li>
+       {% endfor %}
+      {% if page.has_next %}
+        <li><a href="?q={{ query }}&amp;page={{ page.next_page_number }}">下一页</a></li>
+      {% endif %}
+   </ul>
+{% endif %}
+	<script src="https://www.jq22.com/jquery/1.11.1/jquery.min.js"></script>
+	<script type="text/javascript">
+        function searchToggle(obj, evt){
+            //cloest方法获得匹配的第一个元素
+            var container = $(obj).closest('.search-wrapper');
+
+            if(!container.hasClass('active')){
+                  container.addClass('active');
+                  //防止链接打开url
+                  evt.preventDefault();
+            }
+            else if(container.hasClass('active') && $(obj).closest('.input-holder').length == 0){
+                  //移除active的class
+                  container.removeClass('active');
+                  // 清空input
+                  container.find('.search-input').val('');
+                  // clear and hide result container when we press close
+                  //empty()方法移除元素子节点和子内容
+            }
+        }
+    </script>
+</body>
+</html>

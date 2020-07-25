@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人资料</title>
+</head>
+<body>
+{% load static %}
+      <link rel="stylesheet" type="text/css" href="{% static 'src/css/layui.css' %}">
+      <script src="{% static 'src/layui.js' %}"></script>
+      <link rel="stylesheet" type="text/css" href="{% static 'src/css/mainsite/information.css' %}">
+{% csrf_token %}
+<div class="information_box">
+<div class="layui-form layui-form-pane">
+    <div class="layui-upload item">
+            <img  class="layui-upload-img" id="head" data-method="inform_head">
+    </div>
+    <div class="layui-form-item item">
+        <label class="layui-form-label">用户名</label>
+        <div class="layui-input-inline">
+            <input type="text" name="user_name" id="user_name" lay-verify="required" required class="layui-input" >
+        </div>
+    </div>
+    <div class="layui-form-item item">
+         <label class="layui-form-label">兴趣爱好</label>
+        <div class="layui-input-inline">
+            <input type="text" name="user_hobby" id="user_hobby" lay-verify="required" required class="layui-input" placeholder="请完善自己的兴趣爱好">
+        </div>
+    </div>
+     <div class="layui-form-item item">
+         <label class="layui-form-label">座右铭</label>
+        <div class="layui-input-inline">
+            <input type="text" name="user_motto" id="user_motto" lay-verify="required" required class="layui-input" placeholder="请完善自己的座右铭">
+        </div>
+    </div>
+     <div class="layui-form-item item">
+         <label class="layui-form-label">邮箱</label>
+        <div class="layui-input-inline">
+            <input type="text" name="user_email" id="user_email"  class="layui-input" disabled>
+        </div>
+    </div>
+    <button class="layui-btn layui-btn-radius layui-bg-normal" id="confirm" data-method="confirm_">确定</button>
+     <button class="layui-btn layui-btn-radius layui-btn-primary" id="cancel" data-method="cancel_">取消</button>
+</div>
+</div>
+</body>
+<script>
+    layui.use(['layer','jquery','upload'],function(){
+      var layer = layui.layer;
+      var $ = layui.jquery;
+      var upload = layui.upload;
+      $(function(){
+      //获取个人基本信息
+        $.ajax({
+          url:'/user_api/information_api/',
+          type:'GET',
+          success:function(result){
+              var user = result.user;
+              var user_hobby = result.hobby;
+              var user_motto = result.motto;
+              var head_image = result.head_image;
+              var user_email = result.email;
+              $("#user_name").val(user);
+              $("#user_email").val(user_email);
+              if(head_image!= null){
+              $("#head").attr('src',result.head_image);
+              }
+              if(user_hobby != ''){
+                 $("#user_hobby").val(user_hobby);
+                 }
+              if(user_motto != ''){
+                 $("#user_motto").val(user_motto);
+                 }
+          },
+          });
+      });
+       $("#head").mouseenter(function(){
+            layer.tips('点击头像可以修改哦😁~','#head',{tips:[4,'#000000'],time:1000});
+           });
+
+
+       //上传头像
+       head_upload = upload.render({
+              elem:'#head',
+              url:'/user_api/modify_information_api/',
+              //auto:false,  // 是否选完文件后自动上传
+              method:'POST',
+              //bindAction:'#confirm',  // 指派一个按钮触发上传，一般搭配auto:false
+              field:'head_image',  // 表示图片的字段
+              before:function(obj){
+                //上传前
+              this.data ={
+                   'user_email':$('input[name="user_email"]').val(),
+                   'user_name':$('#user_name').val(),
+                   'function':'modify_head_image'
+               };
+              //预读本地文件,在上传文件前执行
+               obj.preview(function(index,file,result){
+                    $("#head").attr('src',result);
+                    parent.layui.$('.layui-nav-img').attr('src',result);
+                });
+              },
+              done:function(result){  //上传完毕后回调
+              //上传失败
+              if(result.code==-5 && result.status == 'error'){
+                parent.layer.msg('修改头像失败',{icon:5,time:1000,closeBtn:0,offset:'t'});
+              }
+              //上传成功
+              else if(result.code==5 && result.status == 'success'){
+                 parent.layer.msg('修改头像成功',{icon:6,time:1000,closeBtn:0,offset:'t'});
+              }
+             },
+             error:function(index,upload){
+               //上传失败
+                parent.layer.msg('服务器无响应',{icon:5,time:1000,closeBtn:0,offset:'t'});
+               },
+            });
+
+
+       var active ={
+        cancel_:function(){
+         var index =parent.layer.getFrameIndex(window.name);  // 获取父窗口的index,通常用于关闭父层iframe
+         parent.layer.close(index);
+         },
+        confirm_:function(){
+          //额外参数
+          data = {
+                  'user_name' : $('input[name="user_name"]').val(),
+                  'user_hobby' : $('#user_hobby').val(),
+                  'user_motto' : $('#user_motto').val(),
+                  'user_email' : $('#user_email').val(),
+                  'function':'save_information'
+                  }
+          $.ajax({
+            url:'/user_api/modify_information_api/',
+            type:'POST',
+            data:data,
+            success:function(result){
+            //注意：parent 是 JS 自带的全局对象，可用于操作父页面
+            var index =parent.layer.getFrameIndex(window.name);  // 获取父窗口的index,通常用于关闭父层iframe
+              if(result.code == 4 && result.status == 'success'){
+               parent.layer.msg('保存成功',{icon:6,time:888,closeBtn:0,offset:'t'});
+               // 注意setTimeout的拼写问题
+               //user_name = $('input[name="user_name"]').val();
+               var user_name =$("#user_name").val();
+               //如果父页面使用了layui中jquery，那么parent后面的$就是用layui，否则会报错,除非将layui和jquery的js一起导入。
+                parent.layui.$('#users').text(user_name);
+               setTimeout(function(){
+                  parent.layer.close(index);
+                },1333);
+              }
+              else if(result.code == 4 && result.status == 'error'){
+                parent.layer.msg('保存失败',{icon:5,time:1000,closeBtn:0,offset:'t'});
+               }
+              },
+            error:function(){
+               parent.layer.msg('服务器无响应',{icon:5,time:1000,closeBtn:0,offset:'t'});
+               }
+            });
+          }
+        };
+
+       $("#cancel,#confirm").click(function(){
+         var othis = $(this);
+         method = othis.data('method');
+         active[method] ? active[method].call(this,othis):'';  // call第一个参数为active中的method方法，第二个参数为对应该方法的othis
+         });
+
+    }) //layui.use结束
+</script>
+</html>

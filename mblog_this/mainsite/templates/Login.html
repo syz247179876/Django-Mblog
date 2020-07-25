@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>百纳云博登陆界面</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'src/css/layui.css' %}">
+      <script src="{% static 'src/layui.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'src/css/mainsite/login.css' %}">
+      <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="{% static 'slide/js/jquery.slideunlock.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'slide/css/slide-unlock.css' %}">
+    <script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+</head>
+<body>
+<div class="login-main" id="login_syz">
+    <header class="layui-logo" style="color:#5FB878">云博登录</header>
+    <!--点击按钮，会自动触发表单，所以如果需要使用ajax回调函数的时候最好不要用form-->
+    <div class="layui-form layui-form-pane">
+        {% csrf_token %}
+        <div class="layui-form-item ">
+        <label class="layui-form-label layui-icon-username layui-icon"></label>
+        <div class="layui-input-block">
+            <input type="text"  name="user_id" id="user_id" required lay-verify="required" placeholder="邮箱" autocomplete="off"
+                   class="layui-input">
+        </div>
+        </div>
+        <div class="layui-form-item">
+        <label class="layui-form-label layui-icon-password layui-icon"></label>
+        <div class="layui-input-block">
+            <input type="password"  name="user_password" id="user_password" required lay-verify="required" placeholder="密码" autocomplete="off"
+                   class="layui-input">
+        </div>
+          </div>
+          <div id="slider">
+        <div id="slider_bg"></div>
+        <span id="label">>></span> <span id="labelTip">拖动滑块验证</span>
+    </div>
+        <hr/>
+        <p><a href="{% url 'mainsite:register' %}" class="fl">立即注册</a><a href="#" class="fr">忘记密码？</a></p>
+          <div style="margin-top:50px;">
+       <button class="icon_qq layui-icon layui-icon-login-qq "></button>
+         <button class="icon_weixin layui-icon layui-icon-login-wechat"></button>
+              <br>
+            <button style="" class="layui-btn layui-bg-normal layui-btn-radius" data-method="login">登录</button>
+            <button style="" class="layui-btn layui-btn-primary layui-btn-radius" data-method="cancel">取消</button>
+           </div>
+    </div>
+
+
+</div>
+<script>
+
+
+
+
+layui.use(['layer','form'], function(){ //独立版的layer无需执行这 一句
+  var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+  //触发事件,可以删除了
+  var csrftoken = $.cookie("csrftoken");
+//登录验证滑块
+ var slider = new SliderUnlock("#slider",{
+			successLabelTip : "验证成功"
+		},function(){
+        	window.location.href="#";
+			//以下四行设置恢复初始，不需要可以删除
+			setTimeout(function(){
+		        $("#labelTip").html("验证成功");
+				$("#labelTip").css("color","#787878");
+				},2000);
+		});
+
+slider.init();//初始化滑块，开始拖动滑块
+
+ $(".icon_qq").click(function(){
+   layer.msg('qq');
+   });
+   $(".icon_weixin").click(function(){
+   layer.msg('微信');
+   });
+   $(".fr").click(function(){
+    layer.msg('请去后台找回密码密码！');
+   });
+  var active = {
+     login:function(){
+       var url_login = '/mainsite/login_windows/';
+       var user_id = $("#user_id").val();
+       var password = $("#user_password").val();
+       var verify = $("#labelTip").text();
+       if(user_id !== '' && password !== '' && verify === '验证成功'){
+       var data_login = {'user_id':user_id,'user_password':password,'function':'login'}
+             $.ajax({
+                url:url_login,
+                type:'POST',
+                data:data_login,
+                 headers:{
+                "X-CSRFToken": csrftoken,
+                },
+                success:function(results){
+                   var index =parent.layer.getFrameIndex(window.name);  // 获取父窗口的index
+                   if(results.status === 'success' && results.code === 1){
+                      parent.layer.msg('登录成功,正在跳转...',{icon:6,time:888,closeBtn:0,offset:'t'});
+                      //layer.msg('nb').delay(1500); //延迟1.5s执行
+                      setTimeout(function(){   //延迟1.111s执行
+                        parent.layer.close(index);
+                          let next_url = '{{ request.session.next_url }}';
+                          if (next_url !== '') {
+                              parent.location.href = '{{ request.session.next_url }}';  //父页采用parent，当前页采用window，最外层页采用top，实现重定向
+                          }else{
+                              parent.location.href='/home_page'
+                          }
+                        },1111);
+                      }
+                   else{
+                      parent.layer.msg('用户名或密码不正确',{icon:5,anim:6,time:1100,closeBtn:0,offset:'t'});
+                      $("#user_id").val('');
+                      $("#user_password").val('');
+                      slider.init(); //初始化滑块，开始拖动滑块
+                      }
+              },
+              });
+         }
+         else if(user_id === ''){
+             parent.layer.msg('请输入邮箱',{icon:3,time:1000,closeBtn:0,offset:'t'});
+           }
+         else if(password === ''){
+           parent.layer.msg('请输入密码',{icon:3,time:1000,closeBtn:0,offset:'t'});
+           }
+         else if(verify !== '验证成功'){
+             parent.layer.msg('请拖动滑块验证！',{icon:3,time:1000,closeBtn:0,offset:'t'});
+           }
+
+
+    },
+    cancel:function(){
+         var index =parent.layer.getFrameIndex(window.name);  // 获取父窗口的index,通常用于关闭父层iframe
+         parent.layer.close(index);
+    }
+
+  };
+
+
+  $('#login_syz .layui-btn').on('click', function(){
+    var othis = $(this), method = othis.data('method');
+    active[method] ? active[method].call(this, othis) : '';
+  });
+  //这里的初始化是滑动&拼图的标志slideVerify
+
+
+
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1058 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 网页宽度和屏幕宽度1：1-->
+               <meta name="baidu-site-verification" content="1OoTLfLb3X" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>云博</title>
+    {% load static %}
+    <!--修改字体-->
+    <link rel="stylesheet" type="text/css" href="{% static 'src/css/mainsite/FirstHead.css' %}">
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<!--    <script src="{% static 'src/js/mainsite/FirstHead.js' %}"></script>-->
+    <!--layui-->
+      <link rel="stylesheet" type="text/css" href="{% static 'src/css/layui.css' %}">
+      <script src="{% static 'src/layui.js' %}"></script>
+      <link rel="stylesheet" type="text/css" href="{% static 'src/css/mainsite/index.css' %}">
+    <!--上导航栏-->
+    <link rel="stylesheet" type="text/css" href="{% static 'jquerysysnav/css/reset.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'jquerysysnav/css/swiper.min.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="https://www.jq22.com/jquery/bootstrap-3.3.4.css">
+	<link rel="stylesheet" href="{% static 'jquerysysnav/css/head.css' %}" />
+    <script src="{% static 'jquerysysnav/js/swiper.min.js' %}"></script>
+
+    <script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+    <!--消息通知-->
+    <script src="{% static 'MessageNotifyPlugin/js/message.js' %}"></script>
+    <script src="{% static 'src/js/iziToast.min.js' %}" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="https://www.jq22.com/jquery/font-awesome.4.6.0.css">
+    <link rel="stylesheet" href="{% static 'MessageNotifyPlugin/css/message.css' %}">
+    <link rel="stylesheet" href="{% static 'src/css/iziToast.min.css' %}">
+
+    <!--按钮-->
+    <link href="{% static 'src/css/playground.css' %}" media="all" rel="stylesheet" type="text/css" />
+
+    <!--右下角悬浮框-->
+    <link rel="stylesheet" type="text/css" href="{% static 'float/css/float-module.min.css' %}">
+    <script src="{% static 'float/js/float-module.min.js' %}"></script>
+     <style type="text/css">
+     body{font-family:ibmplexmono !important;}
+    </style> 
+</head>
+<body class="BODY">
+     <script src="{% static 'src/snowflakes.js' %}"></script>
+    <script src="{% static 'src/snowflake_index.js' %}"></script>
+<!-- 导航 -->
+
+	<header class="header">
+
+		<div class="container clearfix">
+			<div class="fl left">
+				<!--<div class="logos" style="text-decoration:none"><a href="{% url 'home_page' %}">云中鹤</a></div>-->
+			</div>
+			<div class="fr nav">
+				<ul class="navbar_nav" data-in="fadeInDown" data-out="fadeOutUp">
+                    <!--<li>
+                        <a class="hand_homework" style="cursor:pointer;">交作业</a>
+                    </li>-->
+<!--                    <li>-->
+<!--                        <a class="hand_homework_folder" style="cursor:pointer;">软工课设</a>-->
+<!--                    </li>-->
+                    <li>
+                        <a href="{% url 'search' %}" class="layui-icon layui-icon-search" style="font-size:30px"></a>
+                    </li>
+                     <li class="dropdown">
+                         <a href="javascript:;">scrapy+pandas+pyecharts</a>
+                         <div class="dropdown_menu">
+                              <a href="{% url 'visualize:user_analysis:data_analysis/id=自定义图表' %}">绘制自定义图表</a>
+                               <a href="{% url 'visualize:user_analysis:data_analysis/id=成绩分析' %}" >成绩分析</a>
+                               <a href="{% url 'visualize:user_analysis:data_analysis/id=拉勾网数据分析' %}" >IT就业前景数据分析</a>
+                               <a href="{% url 'visualize:user_analysis:data_analysis/id=拉勾网数据展示' %}" >IT就业前景数据展示</a>
+                               <a href="{% url 'visualize:user_analysis:data_analysis/id=进程调度算法' %}" >进程调度算法性能</a>
+                         </div>
+                     </li>
+					 <li class="dropdown">
+                         <a href="javascript:;" style="width: 120px;">&nbsp;技术栈</a>
+                         <div class="dropdown_menu technology_stack">
+<!--							 <a href="{% url 'notes:user_note:note' type_='Python' page_number=1 %}">Python(<span id="Python"></span>)</a>-->
+						</div>
+                     </li>
+					<li class="dropdown">
+						<a href="javascript:void(0)">
+							<i>&nbsp;个人介绍</i>
+						</a>
+						<div class="dropdown_menu">
+							<a href="{% url 'syz_introduce' %}">博主</a>
+						</div>
+					</li>
+                    <li><a href="{% url 'comment:user_msg:message_board' %}">&nbsp;留言板</a></li>
+                        <li><a href="{% url 'home_page' %}">&nbsp; {{'主页'}}</a></li>
+                    {% if not request.user.is_authenticated %}
+                    <li><a href="javascript:;" class="user_logined" id="user_logined_pc" >游客</a></li>
+                        {% else %} <!--判断是否登录-->	
+                    <li class="dropdown">
+						<a href="javascript:;">
+                             <img class="layui-nav-img">
+                             <span class="users">{{request.user.username}}</span>
+                            <div class="dropdown_menu">
+							   <a href="javascript:;" data-method="basic_information" class="individual_">基本资料</a>
+							   <a href="javascript:;" data-method="safe_config" class="safe_config_">安全设置</a>
+						    </div>
+                        </a>
+					</li>
+                    <div id="message"></div>
+                    {% endif %}
+					<li class="dropdown">
+                        {% if not request.user.is_authenticated %}
+                         <a href="javascript:;">&nbsp;登录</a>
+                             {% else %}
+                             <a href="javascript:;">&nbsp;设置</a>
+                                 {% endif %}
+                             <div class="dropdown_menu">
+                              {% if not request.user.is_authenticated %}
+                                 <a href="javascript:;" class="register_a" data-method="register_window" >&nbsp;注册</a>
+                             <a href="javascript:;" class="login_a" data-method="login_window" >&nbsp;登录</a>
+                             {% else %}
+                             <a href="{% url 'mainsite:logout' %}">&nbsp;注销</a>
+                             <a href="{% url 'mainsite:logout' %}">&nbsp;退出</a>
+                             {% endif %}
+                             <a href="javascript:;" class="contact" data-method="contact_syz">联系管理员</a>
+						     <a href="/admin">后台功能</a>
+                             </div>
+                           </a>
+                         </a>
+                    </li>
+				</ul>
+			</div>
+            <a href="javascript:;" id="navToggle">
+	            <span class="layui-icon layui-icon-shrink-right" style="font-size:35px;float:right;color:#b0b7f6;margin-top:-5px;"></span>
+	        </a>
+		</div>
+	</header>
+	<div class="m_nav">
+		<div class="top clearfix">
+			<span class="layui-icon layui-icon-spread-left closed"></span>
+		</div>
+
+		<div class="logo">
+            {% if not request.user.is_authenticated %}
+                 <img class="m_img layui-nav-img">
+            <div class="m_users">
+               <span class="users_">游客</span>
+              &nbsp;<span class="layui-badge-dot"></span>
+            </div>
+            {% else %}
+               <img class="m_img" src="https://django-blog-syz.oss-cn-shanghai.aliyuncs.com/u%3D2471723103%2C4261647594%26fm%3D26%26gp%3D0.jfif">
+            <div class="m_users">
+               <span class="user_logined">{{user}}</span>
+              &nbsp;<span class="layui-badge-dot"></span>
+            </div>
+            {% endif %}
+		</div>
+		<ul class="ul" data-in="fadeInDown" data-out="fadeOutUp">
+			<li class="active">
+				<a href="{% url 'home_page' %}">首页</a>
+			</li>
+            <li class="dropdown">
+                        {% if not request.user.is_authenticated %}
+                         <a href="javascript:;" class="layui-icon">&#xe716;&nbsp;登录</a>
+                             {% else %}
+                             <a href="javascript:;" class="layui-icon">&#xe716;&nbsp;注销</a>
+                                 {% endif %}
+                             <div class="dropdown_menu">
+                             {% if not request.user.is_authenticated %}
+                              <a href="javascript:;" class="layui-icon register_a" data-method="register_window" >&#xe63c;&nbsp;注册</a>
+                             <a href="javascript:;" class="layui-icon login_a" data-method="login_window" >&#xe63c;&nbsp;登录</a>
+                             {% else %}
+                             <a href="{% url 'mainsite:logout' %}" class="layui-icon">&#xe63c;&nbsp;注销</a>
+                             <a href="{% url 'mainsite:logout' %}" class="layui-icon">&#xe63c;&nbsp;退出</a>
+                             {% endif %}
+                             <a href="javascript:;" class="layui-icon contact" data-method="contact_syz">&#xe606;&nbsp;联系管理员</a>
+                             </div>
+                    </li>
+			<li class="dropdown">
+						<a href="javascript:void(0)" class="layui-icon">
+							&#xe716;&nbsp;技术栈
+						</a>
+					<div class="dropdown_menu">
+							 <a href="{% url 'notes:user_note:note' type_='Python' page_number=1 %}">Python</a>
+						 	 <a href="{% url 'notes:user_note:note' type_='Django' page_number=1 %}">Django</a>
+							 <a href="{% url 'notes:user_note:note' type_='Celery' page_number=1 %}">Celery</a>
+                             <a href="javascript:;" class="layui-icon">&#xe62c;Pyecharts</a>
+                               <a href="{% url 'visualize:user_analysis:data_analysis/id=自定义图表' %}" class="layui-icon two_rank">&#xe62c;&nbsp;绘制自定义图表</a>
+                               <a href="{% url 'visualize:user_analysis:data_analysis/id=成绩分析' %}" class="layui-icon two_rank">&#xe62c;&nbsp;成绩分析</a>
+                               <a href="{% url 'visualize:user_analysis:data_analysis/id=拉勾网数据分析' %}" class="layui-icon two_rank">&#xe62c;&nbsp;IT就业前景数据分析</a>
+                               <a href="{% url 'visualize:user_analysis:data_analysis/id=拉勾网数据展示' %}" class="layui-icon two_rank">&#xe62c;&nbsp;IT就业前景数据展示</a>
+                               <a href="{% url 'visualize:user_analysis:data_analysis/id=进程调度算法' %}" class="layui-icon two_rank">&#xe62c;&nbsp;进程调度算法性能</a>
+							 <a href="{% url 'notes:user_note:note' type_='Leetcode' page_number=1 %}" class="layui-icon">Leetcode</a>
+                                <a href="{% url 'notes:user_note:note' type_='Leetcode' page_number=1 %}" class="layui-icon two_rank">动态规划</a>
+                                <a href="{% url 'notes:user_note:note' type_='Leetcode' page_number=1 %}" class="layui-icon two_rank">树</a>
+                                <a href="{% url 'notes:user_note:note' type_='Leetcode' page_number=1 %}" class="layui-icon two_rank">大小顶堆</a>
+                                <a href="{% url 'notes:user_note:note' type_='Leetcode' page_number=1 %}" class="layui-icon two_rank">贪心算法</a>
+                                <a href="{% url 'notes:user_note:note' type_='Leetcode' page_number=1 %}" class="layui-icon two_rank">字符串</a>
+                                <a href="{% url 'notes:user_note:note' type_='Leetcode' page_number=1 %}" class="layui-icon two_rank">链表</a>
+							 <a href="{% url 'notes:user_note:note' type_='JavaScript' page_number=1 %}">JavaScript</a>
+                             <a href="{% url 'notes:user_note:note' type_='Linux' page_number=1 %}">Linux</a>
+							 <a href="{% url 'notes:user_note:note' type_='Restful Api' page_number=1 %}">Restful Api</a>
+							 <a href="{% url 'notes:user_note:note' type_='Pandas' page_number=1 %}">Pandas</a>
+                             <a href="{% url 'notes:user_note:note' type_='Layui' page_number=1 %}">Layui</a>
+                             <a href="{% url 'notes:user_note:note' type_='MySql' page_number=1 %}">MySql</a>
+                             <a href="{% url 'notes:user_note:note' type_='Machine Learning' page_number=1 %}">机器学习</a>
+						</div>
+					</li>
+            <li class="dropdown">
+                <a href="javascript:;" class="layui-icon">
+                    最近动态
+                </a>
+                <div class="dropdown_menu">
+                    <a href="#" >旅游</a>
+                      <a href="javascript:;" class="layui-icon">
+                    消息提醒
+                </a>
+                </div>
+
+            </li>
+            <li class="layui-icon"><a href="{% url 'comment:user_msg:message_board' %}">&#xe6b2;&nbsp;留言板</a></li>
+						<li class="layui-icon"><a href="/admin" >&#xe857;&nbsp;后台功能</a></li>
+			     <li class="layui-icon"><a href="{% url 'home_page' %}" class="layui-icon-home">&nbsp;{{'主页'}}</a></li>
+                    {% if not request.user.is_authenticated %}
+                    <li class="layui-icon"><a href="#" class="user_logined" id="user_logined_m">游客</a></li>
+                        {% else %} <!--判断是否登录-->
+                    <li class="dropdown">
+						<a href="javascript:;" class="layui-icon">个人信息</a>
+                            <div class="dropdown_menu">
+							   <a href="javascript:;" data-method="basic_information" class="individual_">基本资料</a>
+							   <a href="javascript:;" data-method="safe_config" class="safe_config_">安全设置</a>
+						    </div>
+					</li>
+                    {% endif %}
+            <li>
+                 <a class="hand_homework" style="cursor:pointer;">交作业</a>
+
+            </li>
+<!--            <li>-->
+<!--                <a class="hand_homework_folder" style="cursor:pointer;">软工课设</a>-->
+<!--            </li>-->
+		</ul>
+	</div>
+
+    <!--<div style="background:url({% static 'image/background.png' %});opacity:0.4;z-index:-1;height:1000px;width:100%;"></div>  独立一个层放置背景图片-->
+    <!-- 内容主体区域 -->
+            <!--可视化主体-->
+    {% if visualize %}
+     {% block visual_contents %}
+      {% endblock %}
+          <!--非可视化主体-->
+      {% else %}
+      <div class="layui-container" style="z-index:1;">
+          <!--进度条插进来-->
+              <div class="layui-progress" lay-filter="progress-upload-homework" style="display:none;">
+                          <div class="layui-progress-bar" lay-percent="0%"></div>
+              </div>
+         <div class="layui-row">
+             <div class="layui-col-md9">
+                 <!-- 主体中间部分-->
+      {% block contents %}
+      {% endblock %}
+                  <div id="main" style="width: 100%; height: 600px"></div>
+             </div>
+             <!--{% load cache %}
+             {% cache 1 'rightside' %}-->
+             <!-- 主体右侧部分-->
+           <div class="layui-col-md3">
+              <!--<div>{{liquid|safe}}</div>-->
+               <!--2021年考研倒计时-->
+               <blockquote class="layui-elem-quote">
+                   <div id="lastfight"></div>
+               </blockquote>
+              <div class="cloud_label window">
+                  <p class="window_title"><i class="layui-icon layui-icon-theme labels-icon"></i>&nbsp;小云标签</p>
+                  <hr class="layui-bg-orange" style="height:1px;width:43%;">
+                  <div class="layui-card-body">
+                      <div class="layui-btn-container">
+                          <!-- <a href="{% url 'notes:user_note:note' type_='Python' page_number=1 %}"><button type="button" class="layui-btn red layui-btn-radius layui-btn-sm button">Python</button></a>-->
+                      </div>
+                     </div>
+              </div>
+
+              <!-- 日历部分
+               <div class="calender_c">
+                   <div class="layui-inline" id="calendar"></div>
+               </div>
+               -->
+                <!-- 热门文章部分-->
+               <div class="popular_notes window">
+                 <p class="window_title"><i class="layui-icon popular-notes-icon">&#xe705;</i>&nbsp;热门文章：</p>
+                   <hr class="layui-bg-orange hr_" style="height:2px;width:42%;">
+                     <!-- 采用循环 -->
+                   <div id ="notes" style="margin-left:30px;opacity:0.8;"></div>
+                </div>
+                <!-- 网站信息部分-->
+                      <!-- 网站信息部分-->
+               <div class="web_statistic window">
+                   <p class="window_title"><i class="layui-icon web-statistic-icon">&#xe631;</i>&nbsp;网站统计：</p>
+                   <hr class="layui-bg-orange hr_" style="height:1px;width:43%;">
+                   <p class="side_style">
+                      <span>笔记数：</span><span id = "notes_counts"></span>
+                      <span style="padding-left:50px;">总点赞量：</span><span id = "notes_praise"></span>
+                   </p>
+                   <p class="side_style">
+                      <span>总访问量：</span><span id = "notes_visit"></span>
+                       <span style="padding-left:13px;">&nbsp;&nbsp;分类数目：</span><span id ="notes_category"></span>
+                   </p>
+                   <p class="side_style">
+                       <span>服务器：阿里云服务器</span>
+                   </p>
+
+              </div>
+               <!-- 动态-->
+               <div class="dynamic window">
+                  <p class="window_title"><i class="layui-icon dynamic-icon">&#xe667;</i>&nbsp;网站动态：</p>
+                   <hr class="layui-bg-orange hr_" style="height:2px;width:42%;">
+                  <div id ="recent_notes" style="margin-left:30px;opacity:0.8;"></div>
+               </div>
+               <div class="share_technique window">
+                  <p class="layui-icon window_title" >&#xe705;&nbsp;技术分享：</p>
+                   <hr class="layui-bg-orange" style="height:2px;width:42%;">
+                   <div style="padding:10px 10px 10px 30px">
+                       <img src="{% static 'image/qq.jpg' %}" style="width:200px;height:260px">
+                   </div>
+               </div>
+            </div>
+             <!--{% endcache %}-->
+         </div>
+      </div>
+      {% endif %}
+
+<div class="layui-footer footer">
+
+  <div class="">
+    <p>© 2020 <a href="/">syzzjw.cn</a> 云博博客</p>
+    <p>
+      <a href="#">QQ:247179876</a>
+      <!--<a href="javascript:;" site-event="contactInfo">联系</a>-->
+      <a href="#" target="_blank" rel="nofollow">GitHub</a>
+      <p>web后端开发参考文献：</p>
+        <a href="https://docs.djangoproject.com/en/3.0/" target="_blank" rel="nofollow" >Django官方文档</a>
+        <a href="https://docs.celeryproject.org/en/stable/">Celery官方文档</a>
+        <a href="https://django-redis-chs.readthedocs.io/zh_CN/latest/">Redis文档</a>
+        <a href="https://channels.readthedocs.io/en/latest/">Channels官方文档</a>
+        <a href="https://www.layui.com/doc/" target="_blank" rel="nofollow">Layui官方文档</a>
+        <a href="https://project-haystack.org/">haystack官方文档</a>
+
+      <p >苏ICP备20018683</p>
+    </p>
+    <div class="site-union">
+      <p class="site-union-desc">
+        <span>
+          服务器：阿里云服务器，OSS对象存储
+        </span>
+      </p>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+     
+
+      //fm.show();
+
+</script>
+
+<script>
+//JavaScript代码区域
+//获取头像
+
+layui.use(['element', 'carousel', 'layer', 'util', 'code', 'upload', 'jquery'],
+function() {
+    let carousel = layui.carousel;
+    let $ = layui.jquery;
+    let util = layui.util;
+    let layer = layui.layer;
+    let upload = layui.upload;
+    let csrftoken = $.cookie("csrftoken");
+    let element = layui.element;
+
+
+    change_scroll();    // 开启屏幕导航栏滚动
+    hand_work_tip();    // 开启上传作业tip
+    generate_carousel();  // 开启轮播特效
+    generate_fixbar();   // 淡入淡出回到首部
+    get_statistic_notes();  // 获取笔记统计
+    get_notes_list();     // 获取笔记统计列表
+    set_notes_counts();   // 获取不同笔记类型的数量
+    open_float();   //开启右下角悬浮框
+    
+    upload_homework();   //开启上传作业
+
+    first_inform();   // 用户第一次登入网站提示
+    function open_float(){
+    // 右下角悬浮框
+      let fm = new FloatModule({
+        animation:'spring-in',
+        theme_color:'#E4630B',
+        btn_config:[{
+            icon:'fa fa-share-alt',
+        },{
+            icon:'fa fa-share',
+            title:'分享链接',
+             click: function() {
+                  //复制到剪切板
+                 let oInput = document.createElement('input');
+                 let url = window.location.href;
+                 let text = '博主：司云中 \n' +
+                        '链接：' + url + '\n' +
+                        '来源：云博博客\n';
+                 oInput.value = text;
+                 document.body.appendChild(oInput);
+                 oInput.select(); // 选择对象
+                 document.execCommand("Copy"); // 执行浏览器复制命令,关键
+                 oInput.style.display = 'none';
+                 iziToast.success({
+                     title: '复制',
+                     position: 'topCenter',
+                     message:'已复制到剪切板！'
+                 });
+             }
+        },{
+            icon:'fa fa-rocket',
+            title:'回到顶部',
+            click: function(){
+                document.body.scrollTop = document.documentElement.scrollTop = 0;
+            }
+        },{
+            icon:'fa fa-upload',
+            title:'交作业',
+            click: function(){
+                  //othis = $(this);
+                  // upload_homework();
+            }
+          },{
+           icon:'fa fa-search',
+           title:'文章搜索',
+           click:function(){
+                 window.open('/search/');
+           }
+        }]
+     });
+   }
+
+
+
+ function upload_homework(){
+     upload.render({
+         elem: '.fa-upload',
+         url: '/duplicate/upload-homework/',
+         accept: 'file',
+         exts: 'jpg|png|jpeg|pdf|docx|doc|zip|rar|7z',
+         headers: {token: csrftoken},
+         field: 'home_work',
+         multiple: true, // 开启多文件上传
+         before: function (obj) {
+             layer.load(0, {time: 15000}); //上传loading
+         },
+         progress: function (n, elem) {
+             let percent = n + '%'; //获取进度百分比
+             $(".layui-progress").css('display','');
+             element.progress('progress-upload-homework', percent); //可配合 layui 进度条元素使用
+         },
+         done: function (res, index, reload) {
+             if (res.code === 1314) {
+                 //上传完毕回调
+                 layer.closeAll('loading');
+                 let title = '作业上传通知';
+                 let message = '您可以点击download进行查看作业是否成功上传！';
+                 // 弹框
+                 iziToast.show({
+                     theme: 'dark',
+                     icon: 'icon-person',
+                     title: title,
+                     message: message,
+                     animateInside: true,
+                     position: 'center', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
+                     progressBarColor: 'rgb(0, 255, 184)',
+                     buttons: [
+                         ['<button>download</button>', function (instance, toast) {
+                             window.location.href = res.file_url;
+                         }, true], // true to focus
+                     ],
+                 });
+             } else if (res.code === 0) {
+                 layer.closeAll('loading');
+                 iziToast.warning({
+                     title: 'Caution',
+                     animateInside: true,
+                     message: '文件格式命名不正确，失去机会！',
+                 });
+             } else if (res.code === 500) {
+                 layer.closeAll('loading');
+                 iziToast.error({
+                     title: 'Error',
+                     animateInside: true,
+                     message: '您今天已经上传过一次作业，没有机会了',
+                 });
+             }
+             setTimeout(function () {
+                 $(".layui-progress").css('display','none');  //移除进度条
+             }, 100);
+         },
+         error: function () {
+             iziToast.error({
+                 title: 'Error',
+                 animateInside: true,
+                 message: '您今天已经没有机会了',
+             });
+             layer.closeAll('loading');
+             setTimeout(function () {
+                 $(".layui-progress").css('display','none');  //移除进度条
+             }, 500);
+         },
+     });
+ }
+
+
+
+
+     function change_scroll() {
+            //超过一定高度导航添加类名
+            let nav = $("header"); //得到导航对象
+            let win = $(window); //得到窗口对象
+            let sc = $(document); //得到document文档对象。
+            win.scroll(function () {
+                if (sc.scrollTop() >= 100) {
+                    nav.addClass("on");
+                } else {
+                    nav.removeClass("on");
+                }
+            });
+        }
+
+
+    // 2021年考研倒计时
+
+    let thisTimer, setCountdown = function(y, M, d, H, m, s) {
+        var endTime = new Date(y, M || 0, d || 1, H || 0, m || 0, s || 0) //结束日期
+        ,
+        serverTime = new Date(); //假设为当前服务器时间，这里采用的是本地时间，实际使用一般是取服务端的
+        util.countdown(endTime, serverTime,
+        function(date, serverTime, timer) {
+            var str = date[0] + '天  ' + date[1] + '小时    ' + date[2] + '分  ' + date[3] + '秒  ';
+            layui.$('#lastfight').html('距离2020考研倒计时约<br>' + str);
+            thisTimer = timer;
+        });
+    };
+    setCountdown(2020, 11, 20);
+
+    function hand_work_tip() {
+        // 交作业tips
+        $('.hand_homework').hover(function () {
+            var that = this;
+            layer.tips('<h4>作业上传要求说明:</h4><br>' +
+                '<b>1.格式：软件工程-170X-学号-姓名-课程名-实验X.docx &nbsp;/&nbsp; 软件工程-170X-学号-姓名-课程名-课程设计名.docx&nbsp;/&nbsp;软件工程-170X-第X组-组长名-课程名-大作业/讨论课/课程设计名.docx/ppt</b><br><br>' +
+                '<b>2.格式：允许的文件类型：.DOC, .DOCX, .PPT, .PPTX, .XLS, .XLSX</b><br><br>' +
+                '<b style="color:red">3.每个同学每天理论上只有一次机会，我用了限流，所以请认真检查好好格式在上传！！！</b><br><br>' +
+                '<b>4.举个例子：软件工程-1705-17408002125-司云中-微机原理与接口技术-实验4</b><br>', that, {time: 10000, tips: 4}); //在元素的事件回调体中，follow直接赋予this即可
+        });
+    }
+
+
+        //获取头像
+        {% if request.user.is_authenticated %}
+        var head_url = '/user_api/head_url_api/';
+        $.ajax({
+            url: head_url,
+            type: 'GET',
+            success: function (data) {
+                $(".layui-nav-img").attr("src", data.head_image);
+            }
+        });
+        {% endif %}
+
+        //轮播特效
+    function generate_carousel() {
+        carousel.render({
+            elem: '#carousels',
+            width: '95%',
+            height: '400px',
+            arrow: 'hover',
+            autoplay: true,
+            interval: 2000
+        });
+    }
+
+
+
+        //自定义消息  自定义文本css
+        let notices = '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">' + '此功能为自定义绘制图表,通过tab选项卡选择自己想要使用的图表，点击图表右上角第3个图标data view数据视图，' + '添加自己需要可视化分析的数据（要注意格式哦~），然后点击刷新，生成新的图表，最后点击右上角第一个图标，将图表下载下来就可以咯~~~嘿嘿嘿</div>'
+
+        let active = {
+            //缩减向左窗口
+            move_left_side: function () {
+                $(".side").attr('width', '25px');
+            },
+
+            //弹出注册窗体页面层
+            register_window: function () {
+                layer.open({
+                    type: 2,
+                    title: '注册',
+                    content: '/mainsite/register/',
+                    closeBtn: 0,
+                    shade: 0.3,
+                    offset:'t',
+                    anim:3,
+                    area: ['500px', '70%'],
+                    shadeClose: false,
+                    id: 'register_s',
+                    btnAlign: 'c',
+                    resize: false,
+                });
+            },
+
+            //弹出登录窗体页面层
+            login_window: function () {
+                layer.open({
+                    type: 2,
+                    title: '登录',
+                    content: '/mainsite/login/',
+                    offset:'t',
+                    closeBtn: 0,
+                    shade: 0.3,
+                    anim:3,
+                    area: ['500px', '70%'],
+                    shadeClose: false,
+                    id: 'login_s',
+                    btnAlign: 'c',
+                    resize: false,
+                });
+            },
+
+            //自动触发可视化界面的提示弹框
+            notice: function () {
+                layer.open({
+                    type: 1,
+                    title: '温馨提示',
+                    content: notices,
+                    closeBtn: 0,
+                    shade: 0.3,
+                    shadeClose: true,
+                    anim: 1,
+                    id: 'echarts_notice',
+                    btn: ['了解', '欧力给'],
+                    btnAlign: 'c',
+                });
+            },
+
+            //查看个人资料
+            basic_information: function () {
+                layer.open({
+                    type: 2,
+                    // 1为页面框，2为iframe框，3加载层，4tips层
+                    title: '个人资料',
+                    content: '/mainsite/basic_information/',
+                    shade: 0.3,
+                    anim: 4,
+                    offset:'t',
+                    // btn: ['确定', '取消'],
+                    //closeBtn: 1,
+                    //btnAlign: 'c',
+                    resize: false,
+                    area: ['600px', '500px'],
+                    id: 'individual_information',
+                });
+            },
+            //安全设置,修改密码
+            safe_config: function () {
+                layer.msg('请登录后台操作', {
+                    icon: 4,
+                    time: 888,
+                    closeBtn: 0,
+                    offset: 't'
+                });
+            },
+            //联系管理员
+            contact_syz: function () {
+                layer.open({
+                    type: 2,
+                    title: '联系管理员哥哥',
+                    content: '/mainsite/contact_syz/',
+                    shade: 0.3,
+                    anim: 0,
+                    offset:'t',
+                    resize: false,
+                    area: ['500px', '400px'],
+                    id: 'contact_manager',
+                });
+            }
+
+        };
+        //这个地方有点意思哦~
+        $('.individual_,#layer_notice,#chuowo,.register_a,.login_a,.reward_author,.safe_config_,.contact,.left_side_window').on('click',
+            function () {
+                var othis = $(this),
+                    //othis代表了当前执行click的dom元素对象
+                    method = othis.data('method'); //匹配dom元素中的data-method,赋给method
+                active[method] ? active[method].call(this, othis) : ''; //比较method是否在active字典中，有的话回调该函数，对应othis的dom元素
+            });
+
+        //淡入和淡出控件，监听轮动栏,拖动进度条
+    function generate_fixbar(){
+           $(".layui-body").scroll(function () {
+            if ($(".layui-body").scrollTop() < 100) {
+                $("ul.layui-fixbar").fadeOut(); //淡出
+                $(".layui-header").slideDown(400);
+            }
+            if ($(".layui-body").scrollTop() >= 130) {
+                $("ul.layui-fixbar").fadeIn();
+                $(".layui-header").slideUp(400);
+                //$(document.body).height()获取窗口的元素
+            }
+        });
+    }
+
+
+        //ajax获取笔记统计量
+        function get_statistic_notes() {
+            let url = '/user_api/notes_statistic_api/';
+            $.get(url,
+                function (data) {
+                    let all_notes_counts = data.all_notes_counts;
+                    let all_notes_praise = data.all_notes_praise;
+                    let all_notes_visit = data.all_notes_visit;
+                    let all_notes_type = data.all_notes_type;
+                    $("#notes_counts").text(all_notes_counts + '篇');
+                    $("#notes_praise").text(all_notes_praise + '次');
+                    $("#notes_visit").text(all_notes_visit + '次');
+                    $("#notes_category").text(all_notes_type+ '类');
+                });
+        }
+
+
+        //笔记列表统计
+    function get_notes_list() {
+        let notes_list_url = '/user_api/note_list/';
+        $.ajax({
+            url: notes_list_url,
+            type: 'GET',
+            success: function (data) {
+                $.each(data,
+                    function (i, item) {
+                        let address = "/notes/user_articles_list/" + item.slug;
+                        let note = '<p class="notes_list"><a href=' + address + '>' + Math.round(i + 1) + '、' + item.title + '</a></p>';
+                        note += '<p style="padding-top:5px;font-size:12px;color:#A9A9A9">' + item.publish_date + '<span style="padding-left:20px;">阅读数</span>' + item.read_counts + '</p>';
+                        note += '<hr style="border-color:#E6E6FA;border-style:dashed;">';
+                        $("#notes").append(note);
+                    });
+            },
+            error: function () {
+                console.info('获取失败');
+            },
+        });
+    }
+        // 笔记类型数量统计
+    function set_notes_counts() {
+        let notes_type_counts_url = '/mainsite/notes-type-counts/';
+        let label_contents = [];
+        let nav_contents = [];
+        $.ajax({
+            url: notes_type_counts_url,
+            type: 'GET',
+            success: function (data) {
+                for (let key in data) {
+                    let value = data[key];
+                    let label_content = '';
+                    if (parseInt(key)%5===0){
+                          label_content = '<a href="/notes/user_note/note/'+value[0]+'/page_number=1"><button type="button" class="layui-btn red layui-btn-radius layui-btn-sm button">'+value[0]+'</button></a>';
+                    }else if(parseInt(key)%5===1){
+                          label_content = '<a href="/notes/user_note/note/'+value[0]+'/page_number=1"><button type="button" class="layui-btn magenta layui-btn-radius layui-btn-sm button">'+value[0]+'</button></a>';
+                    }else if(parseInt(key)%5===2){
+                          label_content = '<a href="/notes/user_note/note/'+value[0]+'/page_number=1"><button type="button" class="layui-btn orange  layui-btn-sm button">'+value[0]+'</button></a>';
+                    }else if(parseInt(key)%5===3){
+                          label_content = '<a href="/notes/user_note/note/'+value[0]+'/page_number=1"><button type="button" class="layui-btn blue button layui-btn-radius layui-btn-sm">'+value[0]+'</button></a>';
+                    }else if(parseInt(key)%5===4){
+                          label_content = '<a href="/notes/user_note/note/'+value[0]+'/page_number=1"><button type="button" class="layui-btn green button layui-btn-radius layui-btn-sm">'+value[0]+'</button></a>';
+                    }
+                    let nav_content = '<a href="/notes/user_note/note/'+value[0]+'/page_number=1">'+value[0]+'('+value[1]+'篇)</a>';
+
+                    nav_contents.push(nav_content);
+                    label_contents.push(label_content);
+                }
+                $(".technology_stack").append(nav_contents.join(''));
+                $(".layui-btn-container").append(label_contents.join(''));
+            },
+        });
+    }
+
+    // 开启websocket通信协议
+    function open_websocket() {
+
+        const informSocket = new WebSocket('wss://' + window.location.host + '/inform/');
+
+
+        //  通知不同最近的笔记消息，根据用户是否登录具备相关class属性
+        if ($(".users").length > 0) {
+            let username = $(".users").text();
+            //建立websocket连接
+
+            // 第一次建立websocket连接成功执行.获取该用户的的最近消息
+            informSocket.onopen = function () {
+                let data_get_inform = {
+                    'username': username
+                };
+                let notes_add_url = '/user_api/recent-notes/';
+                $.ajax({
+                    url: notes_add_url,
+                    type: 'POST',
+                    headers: {
+                        "X-CSRFToken": csrftoken,
+                    },
+                    data: data_get_inform,
+                    success: function (data) {
+                        MessagePlugin.init({
+                            elem: "#message",
+                            msgData: data.sysInform,
+                            noticeData: data.datas,
+                            msgUnReadData: data.sysNumber,
+                            noticeUnReadData: data.totalNumber,
+                            msgClick: function (obj) {
+                                cur_notice = $(".badge").text();
+                                cur_notice = parseInt(cur_notice) - 1;
+                                $(".badge").text(cur_notice);
+                                obj.readStatus = 0;
+                            },
+                            noticeClick: function (obj) {
+                            },
+                            allRead: function (obj) {
+                                cur_notice = $(".badge").text(0);
+                            },
+                            getNodeHtml: function (obj, node) {
+                                let html = '';
+                                if (obj.readStatus === 1) {
+                                    node.isRead = true;
+                                    html = "<p>" + obj.text + "</p>";
+                                } else {
+                                    node.isRead = false;
+                                    html = "<strong>" + obj.text + "</strong>";
+                                }
+                                node.html = html;
+                                return node;
+                            }
+                        });
+                    },
+                });
+
+            };
+
+            //当服务器端推送数据过来的时候执行
+            informSocket.onmessage = function (e) {
+                let message_ = JSON.parse(e.data);  //获取json数据
+                let head_image = message_.head_image;  // 用户头像
+                let slug = message_.slug;
+                let title = '';
+                let message = '';
+                if (message_.func !== 'homework') {
+                    if (message_.func === 'praise') {
+                        title = '点赞提醒';
+                        message = message_.trigger_username + '刚刚给' + message_.username + '  的文章《' + message_.article + '》点了个赞！,快去围观吧~';
+                    } else if (message_.func === 'reply') {
+                        title = '回复提醒';
+                        message = message_.trigger_username + '刚刚给' + message_.username + '  的文章《' + message_.article + '》添加了一条回复！,快去围观吧~';
+                    } else if (message_.func === 'msg') {
+                        title = '评论提醒';
+                        message = message_.trigger_username + '刚刚给' + message_.username + ' 的文章《' + message_.article + '》添加了一条评论！,快去围观吧~';
+                    } else if (message_.func === 'add_article') {
+                        title = '文章发布提醒';
+                        message = message_.username + '刚刚发表了一篇文章：《' + message_.article + '》！';
+                    }
+                    iziToast.show({
+                        theme: 'dark',
+                        title: title,
+                        message: message,
+                        position: 'topCenter',
+                        progressBarColor: 'red',
+                        image: head_image,
+                        drag: true,
+                        transitionOut: 'bounceInLeft',
+                        transitionOut: 'fadeOutRight',
+                        imageWidth: 70,
+                        iconColor: 'rgb(0, 255, 184)',
+                        buttons: [
+                            ['<button>前去阅读!</button>', function (instance, toast) {
+                                window.location.href = '/notes/user_articles_list/' + slug;
+                            }, true], // true to focus
+                        ],
+                    });
+                }else {
+                    title = '作业上传通知';
+                    message = '学生' + message_.name + '刚刚成功上传了' + message_.project + '的' + message_.article + '！';
+                    let head_image = 'https://django-blog-syz.oss-cn-shanghai.aliyuncs.com/u%3D2471723103%2C4261647594%26fm%3D26%26gp%3D0.jfif';
+                    iziToast.show({
+                        class: 'test',
+                        color: 'white',
+                        icon: 'icon-person',
+                        title: title,
+                        message: message,
+                        animateInside: true,
+                        position: 'topCenter',
+                        transitionIn: 'flipInX',
+                        transitionOut: 'flipOutX',
+                        progressBarColor: 'red',
+                        imageWidth: 70,
+                        layout: 1.5,
+                        iconColor: 'rgb(0, 255, 184)'
+                    });
+                }
+                if (message_.func !== 'add_article' || message_.func !== 'homework') {
+                    let cur_notice = parseInt($(".badge").text()) + 1;
+                    $(".badge").text(cur_notice);
+                    let data_get_inform = {
+                        'username': username
+                    };
+                    let notes_add_url = '/user_api/recent-notes/';
+                    $.ajax({
+                        url: notes_add_url,
+                        type: 'POST',
+                        headers: {
+                            "X-CSRFToken": csrftoken,
+                        },
+                        data: data_get_inform,
+                        success: function (data) {
+                            MessagePlugin.init({
+                                elem: "#message",
+                                msgData: data.datas,
+                                noticeData: data.datas,
+                                msgUnReadData: data.totalNumber,
+                                noticeUnReadData: data.totalNumber,
+                                msgClick: function (obj) {
+                                    cur_notice = $(".badge").text();
+                                    cur_notice = parseInt(cur_notice) - 1;
+                                    $(".badge").text(cur_notice);
+                                    obj.readStatus = 0;
+                                },
+                                noticeClick: function (obj) {
+                                },
+                                allRead: function (obj) {
+                                    cur_notice = $(".badge").text(0);
+                                },
+                                getNodeHtml: function (obj, node) {
+                                    let html = '';
+                                    if (obj.readStatus === 1) {
+                                        node.isRead = true;
+                                        html = "<p>" + obj.text + "</p>";
+                                    } else {
+                                        node.isRead = false;
+                                        html = "<strong>" + obj.text + "</strong>";
+                                    }
+                                    node.html = html;
+                                    return node;
+                                }
+                            });
+                        },
+                    });
+                }
+            };
+        }
+    };
+
+        //高亮选中的模块
+    function open_highlight() {
+        $(".web_statistic").mouseenter(function () {
+            $(".web_statistic").css("box-shadow", "0px 0px 50px 1px #F8F8FF");
+        });
+        $(".web_statistic").mouseleave(function () {
+            $(".web_statistic").css("box-shadow", "0px 0px 0px 0px #F8F8FF");
+        });
+        $(".cloud_label").mouseenter(function () {
+            $(".cloud_label").css("box-shadow", "0px 0px 50px 1px #F8F8FF");
+        });
+        $(".cloud_label").mouseleave(function () {
+            $(".cloud_label").css("box-shadow", "0px 0px 0px 0px #F8F8FF");
+        });
+        $(".popular_notes").mouseenter(function () {
+            $(".popular_notes").css("box-shadow", "0px 0px 50px 1px #F8F8FF");
+        });
+        $(".popular_notes").mouseleave(function () {
+            $(".popular_notes").css("box-shadow", "0px 0px 0px 0px #F8F8FF");
+        });
+
+        $(".share_technique").mouseenter(function () {
+            $(".share_technique").css("box-shadow", "0px 0px 50px 1px #F8F8FF");
+        });
+        $(".share_technique").mouseleave(function () {
+            $(".share_technique").css("box-shadow", "0px 0px 0px 0px #F8F8FF");
+        });
+
+        $(".dynamic").mouseenter(function () {
+            $(".dynamic").css("box-shadow", "0px 0px 50px 1px #F8F8FF");
+        });
+        $(".dynamic").mouseleave(function () {
+            $(".dynamic").css("box-shadow", "0px 0px 0px 0px #F8F8FF");
+        });
+    }
+        // 第一次登录界面，通知最新网站动态
+    function first_inform() {
+            $.ajax({
+                url: '/user_api/inform-latest-api/',
+                type: 'GET',
+                headers: {
+                    "X-CSRFToken": csrftoken,
+                },
+                success: function (data) {
+                    if (data.length > 0){
+                    $.each(data, function (index, value) {
+                        iziToast.show({
+                            title: value.inform_type + '  ' +value.inform_title+ ' <br><br>  时间: '+ value.inform_time,
+                            maxWidth: '500px',
+                            layout: 2,
+                            timeout:5000,
+                            message: value.inform_content,
+                            position: 'bottomLeft',
+                            transitionIn: 'bounceInLeft',
+                            transitionOut: 'fadeOutRight',
+                            animateInside: true,
+                            drag:true,
+                            zindex:999999,
+                            image: value.inform_image,
+                            animateInside:true,
+                        });
+                    });
+                  } 
+                    //构造弹出框，弹出最新网站动态
+                    //event.preventDefault(); 阻止执行事件的默认操作
+                },
+            });
+    }
+     function nav_mobile() {
+           //移动端展开nav
+           $('#navToggle').on('click',
+               function () {
+                   $('.m_nav').addClass('open');
+               });
+           //关闭nav
+           $('.m_nav .top .closed').on('click',
+               function () {
+                   $('.m_nav').removeClass('open');
+               });
+
+           //二级导航  移动端
+           $(".m_nav .ul li").click(function () {
+               $(this).children("div.dropdown_menu").slideToggle('slow');
+               $(this).siblings('li').children('.dropdown_menu').slideUp('slow'); //li的所有同级元素
+           });
+       }
+ //移动端导航栏按钮
+    $(function() {
+        nav_mobile();   // 开启移动端展开关闭功能
+        open_websocket();   //开启websocket通信
+        open_highlight();   //开启高亮区域
+    });
+}); //layui.use
+
+</script>
+</body>
+</html>
+

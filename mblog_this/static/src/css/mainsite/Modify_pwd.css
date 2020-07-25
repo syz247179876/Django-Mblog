@@ -1,0 +1,25 @@
+.modify_pwd{
+position: relative;
+width:350px;
+text-align:center;
+margin:0 auto;
+top:10px;
+left:0;
+right:0;
+bottom:0;
+}
+
+.modify_pwd header {
+    margin-top: 5px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 30px;
+    font-weight: 100;
+    text-align: center;
+    color:#5FB878;
+    margin-bottom:20px;
+}
+
+.modify_pwd .layui-form-item {
+     margin-left:10px;
+}

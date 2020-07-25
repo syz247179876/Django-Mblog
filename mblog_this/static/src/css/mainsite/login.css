@@ -1,0 +1,100 @@
+.login-box {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 320px;
+    height: 241px;
+    max-height: 300px;
+}
+
+.login-body .login-box h3 {
+    color: #444;
+    font-size: 22px;
+    font-weight: 100;
+    text-align: center;
+}
+
+.login-box .layui-input[type='number'] {
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+}
+
+.login-box img {
+    display: inline-block;
+    width: 46%;
+    height: 38px;
+    border: none;
+    vertical-align: top;
+    cursor: pointer;
+    margin-left: 4%;
+}
+
+.login-box button.btn-reset {
+    width: 95px;
+}
+
+.login-box button.btn-submit {
+    width: 190px;
+}
+
+.login-main {
+    position: relative;
+    top: 10px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 360px;
+    margin: 0 auto;
+    text-align:center;
+    width:350px;
+}
+/*text-align很关键，居中，使得在iframe层中完全显示*/
+.login-main header {
+    margin-top: 0px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 30px;
+    font-weight: 100;
+    text-align: center;
+    font-weight:initial;
+}
+
+.login-main header, .layui-input-inline {
+    margin-bottom: 15px;
+}
+
+
+
+
+.fl{
+float:left;
+}
+.fr{
+float:right;
+}
+
+.icon_weixin{
+color:green;
+font-size:35px;
+border-style:none;
+background:#fff;
+padding:10px;
+cursor:pointer;
+}
+
+
+
+.icon_qq{
+color:#9b332e;
+font-size:35px;
+border-style:none;
+background:#fff;
+padding:10px;
+cursor:pointer;
+}
+
+

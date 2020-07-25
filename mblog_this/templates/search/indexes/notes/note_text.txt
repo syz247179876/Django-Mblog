@@ -1,0 +1,6 @@
+{{ object.title }}
+{{ object.note_author.username }}
+{{ object.shorthand }}
+{{ object.type }}
+{{ object.key_word }}
+{{ object.note_contents }}
