@@ -31,6 +31,6 @@
 10.搭配redis实现网站通知和个人文章通知
 
 
-
+项目部署请参考<a href ="https://syzzjw.cn/notes/user_articles_list/syz_django_deploy/"> Django+nginx+uwsgi+python+celery部署/</a>
 
 ### 想要互换友链的请留下url～
