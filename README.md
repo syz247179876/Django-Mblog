@@ -8,6 +8,8 @@
 个人博客地址：<a href ="https://syzzjw.cn/home_page">syzzjw.cn/home_page</a>
 
 
+项目部署请参考<a href ="https://syzzjw.cn/notes/user_articles_list/syz_django_deploy/"> Django+nginx+uwsgi+python+celery部署/</a>
+
 ## 主要功能：
 
 1.完整的登录，注册，采用celery+邮箱发送验证码登录
@@ -31,6 +33,5 @@
 10.搭配redis实现网站通知和个人文章通知
 
 
-项目部署请参考<a href ="https://syzzjw.cn/notes/user_articles_list/syz_django_deploy/"> Django+nginx+uwsgi+python+celery部署/</a>
 
 ### 想要互换友链的请留下url～
