@@ -22,7 +22,7 @@ class mysql:
         self.HOST = '127.0.0.1'
         self.PORT = 3306
         self.USERNAME = 'root'
-        self.PASSWORD = 'syzxss247179876'
+        self.PASSWORD = '123456'
         self.DB_NAME = 'syz_user'
         self.CHARSET = 'utf8'
 
