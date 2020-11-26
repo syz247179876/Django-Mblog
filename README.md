@@ -1,6 +1,6 @@
 # django-mblog 
 
-一款支持多人的博客系统
+一款支持多人的博客系统,基于Django2.2 和Django RestFul Framework 
 
 作为Django学习的入门项目，代码的质量自认为还是有些不足的，可以先去我的博客看一下，喜欢的，求个Star～
 
